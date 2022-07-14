@@ -1,0 +1,166 @@
+------ 작업 전, 꼭 읽어주세요 ------
+### ThemeProvider 메뉴얼
+- 폰트 사이즈
+- 폰트 굵기
+-  사용 색상
+- MediaQuery
+
+### ThemeProvider 사용방법
+- ${props => props.theme.속성명}을 사용한 작성 방법
+
+### GlobalStyle 메뉴얼
+- h1~h3, p, span, div, input 태그 폰트 규격 
+- 사이즈 규격 
+- 요소 blind 처리를 위한 classname 처리
+- text blind 처리를 위한 classname 처리
+- MediaQuery classname 처리
+
+메뉴얼에 따라서 상황에 맞게 사용해주세요:)
+
+
+----- ThemeProvider 메뉴얼 -----
+
+/* 폰트 사이즈 */
+const Size={
+    XS: '10px', // 웹 상에서 적용되어 있는 가장 작은 글씨체 입니다.
+    S:  '12px', // 따르릉의 기본 폰트 사이즈 입니다. 
+    M: '14px', // 서브 타이틀 사용시 사용할 사이즈 입니다.
+    L:  '16px', // 메뉴바 혹은 페이지 내 타이틀 작성 시 사용할 사이즈 입니다.
+    XL:  '35px' // h1태그를 사용할 때 사용 해주세요.(ex:로그인, 회원가입 페이지 제목)
+};
+/* 폰트 굵기 */
+const weight={      // Reg 300 -> 400 변경
+    Reg: '400', // 폰트의 기본 굵기 입니다. 400 이하는 글자가 희미하게 보임으로. 가급적 사용을 권장하지 않습니다.
+    Md: '500', // 서브 타이틀 혹은 fontSize M 사이즈 사용 시 사용해주세요.
+    B:'700', // 메뉴바 혹은  fontSize L 사이즈 사용 시 사용해주세요.
+    EB: '900' // h1 태그 및 XL 사이즈 사용 시 사용해주세요.
+};
+/* 색상 */
+const color ={
+    BG:'#98D6F6',  // 기본 배경 색상입니다.
+    Main:'#228AE6', // 메인 컬러입니다. 포인트를 줄 때 사용해주세요.
+    gray:'#7e7e7e',
+    grayD:'#535353', //gray-Dark 약자로 기본 회색 글자 색상 입니다. 
+    grayL: '#d5d5d5', //gray-Light 약자 
+    grayEL:'#f6f3f2' // gray-ExLight 약자로 검정색 바탕에 글자 입력시 사용하는 색상입니다.
+    
+};
+
+/* MediaQuery */
+const deviceSizes = {
+  mobile: '640px',
+  };
+  
+  const device = {
+    mobile: `(max-width: ${deviceSizes.mobile})`,
+  };
+  
+
+const theme ={size, weight, color, device}
+
+
+-----ThemeProvider 사용방법 -----
+ThemeProvider에서 지정한 속성을 사용하기 위해서는 아래와 같은 방법으로 작성해주면 됩니다.
+
+${props => props.theme.속성명}
+
+ex) 글자 크기
+    font-size: ${props => props.theme.size.XL};
+    글자 굵기
+    font-weight: ${props => props.theme.weight.EB};
+
+
+----- GlobalStyles 메뉴얼 -----
+// 폰트 사이즈 규격
+
+// h1태그는 회원가입, 로그인 페이지 제목에만 사용해주세요!!!
+h1{
+	font-size: ${props => props.theme.size.XL};
+	font-weight: ${props => props.theme.weight.EB};
+}
+h2{
+	font-size: ${props => props.theme.size.L};
+	font-weight: ${props => props.theme.weight.B};
+}
+h3{
+	font-size: ${props => props.theme.size.M};
+	font-weight: ${props => props.theme.weight.Md};
+}
+
+p,
+span,
+div{
+	font-size: ${props => props.theme.size.S};
+	font-weight: ${props => props.theme.weight.Reg};
+}
+input{
+	font-size: ${props => props.theme.size.XS};
+	font-weight: ${props => props.theme.weight.Reg};
+	color: ${props => props.theme.color.grayD};
+}
+
+// 화면 사이즈 규격(Globalstyles.jsx 파일에 적용됨)
+.containerSize{
+	width: 640px;
+ 	margin: 0 auto;
+  	padding: 0 20px;
+  	box-sizing: border-box;
+}
+페이지에 사이즈 적용을 위해서는 
+className='containerSize'
+
+// 화면상의 요소 사라지게하기
+.blind{
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    z-index: -1;
+    border: 0;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+}
+
+// 화면상의 글자 사라지게하기
+.textBlind{
+    text-indent: -9999px;
+}
+
+//Mediaquery 적용
+.media{
+	@media ${props => props.theme.device.mobile} {
+    width: 100%;
+  }
+}
+
+
+
+
+-----모달 적용방법 -----
+
+1. 모달을 달아야 하는 파일에 아래의 코드를 추가해주세요.
+const [modal, setModal] = React.useState(false);
+const onModalOpen = React.useCallback(() => {
+    setModal(true);
+},[]);
+
+{modal && (<모달파일명 modal={modal} setModal={setModal} />)}
+
+2. 모달 파일명은 아래를 보시고 해당하는 파일명을 붙여주시면 됩니다.
+
+[확인 버튼] 
+로그인이 필요합니다. --- LoginPlz
+예약이 완료되었습니다.  --- ReservationOk
+아이디 또는 비밀번호가 잘못되었습니다. -- IdPwdNo
+회원가입이 완료되었습니다.  -- JoinOk
+이름 또는 이메일을 재확인해주세요. -- NameEmailRight
+아이디 또는 이메일을 재확인해주세요. -- IdEmailRight
+비밀번호 변경이 완료되었습니다.  -- PwdChange
+이름, 이메일 확인 및 새 비밀번호를 입력해주세요. -- NameEmailPwdInput
+
+[아니요/네]
+정말 삭제하시겠습니까?--DeleteYN
+정말 취소하시겠습니까?-- CancleYN
+
+3. 마지막으로 클릭이벤트를 걸어주시고, 이벤트 이름은 'onModalOpen' 입니다.

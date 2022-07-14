@@ -1,0 +1,23 @@
+{
+ "name": "App",
+ "icons": [
+  {
+    "src": "\/ms-icon-144x144.png",
+    "sizes": "140x140",
+    "type": "image\/png",
+    "density": "2.0"
+  },
+  {
+   "src": "\/apple-icon-152x152.png",
+   "sizes": "180x180",
+   "type": "image\/png",
+   "density": "3.0"
+  },
+  {
+   "src": "\/android-icon-192x192.png",
+   "sizes": "192x192",
+   "type": "image\/png",
+   "density": "4.0"
+  }
+ ]
+}

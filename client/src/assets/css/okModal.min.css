@@ -1,0 +1,2 @@
+.modalWrap{position:fixed;top:50%;left:50%;z-index:100;width:250px;height:150px;transform:translate(-50%, -50%);background:white;border:1px solid #7e7e7e}.modalWrap .modalInner{padding:10px}.modalWrap .modalInner button{width:100%;height:30px;margin-top:10px;border:none;background-color:#98D6F6;color:#fff;border-radius:3px}.modalWrap .textWrap{padding:27px 5%;height:33px}.modalWrap .textWrap p{text-align:center;line-height:1.3}
+/*# sourceMappingURL=okModal.min.css.map */
