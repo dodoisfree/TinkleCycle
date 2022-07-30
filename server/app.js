@@ -18,10 +18,15 @@ import cors from "cors";
 
 import PageNotFoundException from "./exceptions/PageNotFoundException.js";
 
+import CookieController from "./controllers/CookieController.js";
+import SessionController from "./controllers/SessionController.js";
+import SendMailController from "./controllers/SendMailController.js";
+import FileUploadController from "./controllers/FileUploadController.js";
+
 // Express 생성
 const app = express();
 const __dirname = path.resolve();
-dotenv.config({ path: path.join(__dirname, "../../EzenFullstack_note/07_NodeJS/config.env") });
+dotenv.config({ path: path.join(__dirname, "../config.env") });
 
 
 // client 접속 시 초기화
@@ -86,6 +91,9 @@ app.use(process.env.THUMB_URL, serveStatic(process.env.THUMB_DIR));
 app.use(serveFavicon(process.env.FAVICON_PATH));
 app.use(WebHelper());
 
+// 컨트롤러
+app.use(CookieController());
+app.use(SessionController());
 
 /** 컨트롤러에서 에러 발생시 'next(에러객체)`를 호출 했을 때 동작할 처리 */
 app.use((err, req, res, next) => res.sendError(err));

@@ -1,0 +1,82 @@
+2022-07-30 23:26:05 677 [debug]: --------------------------------------------
+2022-07-30 23:26:05 683 [debug]: |           Start Express Server           |
+2022-07-30 23:26:05 683 [debug]: --------------------------------------------
+2022-07-30 23:26:05 685 [debug]: server address => http://221.154.247.73:3001
+2022-07-30 23:26:05 685 [debug]: server address => http://192.168.221.1:3001
+2022-07-30 23:26:05 686 [debug]: server address => http://192.168.91.1:3001
+2022-07-30 23:26:05 686 [debug]: --------------------------------------------
+2022-07-30 23:26:12 324 [debug]: 클라이언트가 접속했습니다.
+2022-07-30 23:26:12 326 [debug]: [client] ::ffff:221.154.247.73 / Windows 10.0 / Chrome / (102.0.5005.141) / Microsoft Windows
+2022-07-30 23:26:12 327 [debug]: [GET] http://221.154.247.73:3001/
+2022-07-30 23:26:12 340 [debug]: 클라이언트의 접속이 종료되었습니다. ::: [runtime] 15ms
+2022-07-30 23:26:12 341 [debug]: --------------------------------------------------------
+2022-07-30 23:27:05 115 [info]: Database Pool is closed
+2022-07-30 23:27:07 798 [debug]: --------------------------------------------
+2022-07-30 23:27:07 801 [debug]: |           Start Express Server           |
+2022-07-30 23:27:07 802 [debug]: --------------------------------------------
+2022-07-30 23:27:07 803 [debug]: server address => http://221.154.247.73:3001
+2022-07-30 23:27:07 804 [debug]: server address => http://192.168.221.1:3001
+2022-07-30 23:27:07 805 [debug]: server address => http://192.168.91.1:3001
+2022-07-30 23:27:07 806 [debug]: --------------------------------------------
+2022-07-30 23:27:07 966 [debug]: 클라이언트가 접속했습니다.
+2022-07-30 23:27:07 967 [debug]: [client] ::ffff:221.154.247.73 / Windows 10.0 / Chrome / (102.0.5005.141) / Microsoft Windows
+2022-07-30 23:27:07 968 [debug]: [GET] http://221.154.247.73:3001/
+2022-07-30 23:27:07 976 [debug]: 클라이언트의 접속이 종료되었습니다. ::: [runtime] 9ms
+2022-07-30 23:27:07 977 [debug]: --------------------------------------------------------
+2022-07-30 23:27:08 064 [debug]: 클라이언트가 접속했습니다.
+2022-07-30 23:27:08 068 [debug]: [client] ::ffff:221.154.247.73 / Windows 10.0 / Chrome / (102.0.5005.141) / Microsoft Windows
+2022-07-30 23:27:08 069 [debug]: [GET] http://221.154.247.73:3001/favicon.ico
+2022-07-30 23:27:08 077 [debug]: 클라이언트의 접속이 종료되었습니다. ::: [runtime] 9ms
+2022-07-30 23:27:08 077 [debug]: --------------------------------------------------------
+2022-07-30 23:27:13 336 [debug]: 클라이언트가 접속했습니다.
+2022-07-30 23:27:13 337 [debug]: [client] ::ffff:221.154.247.73 / Windows 10.0 / Chrome / (102.0.5005.141) / Microsoft Windows
+2022-07-30 23:27:13 337 [debug]: [GET] http://221.154.247.73:3001/ㅁ
+2022-07-30 23:27:13 341 [error]: [Error] 페이지를 찾을 수 없습니다.
+2022-07-30 23:27:13 343 [error]: Error: 페이지를 찾을 수 없습니다.
+    at file:///C:/Users/yocas/Desktop/Down/TinkleCycle/server/app.js:94:48
+    at Layer.handle [as handle_request] (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:286:9
+    at param (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:280:10)
+    at Layer.handle [as handle_request] (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:328:13)
+2022-07-30 23:27:13 348 [debug]: 클라이언트의 접속이 종료되었습니다. ::: [runtime] 11ms
+2022-07-30 23:27:13 348 [debug]: --------------------------------------------------------
+2022-07-30 23:27:44 120 [debug]: 클라이언트가 접속했습니다.
+2022-07-30 23:27:44 120 [debug]: [client] ::ffff:221.154.247.73 / Windows 10.0 / Chrome / (102.0.5005.141) / Microsoft Windows
+2022-07-30 23:27:44 121 [debug]: [GET] http://221.154.247.73:3001/page1
+2022-07-30 23:27:44 123 [error]: [Error] 페이지를 찾을 수 없습니다.
+2022-07-30 23:27:44 123 [error]: Error: 페이지를 찾을 수 없습니다.
+    at file:///C:/Users/yocas/Desktop/Down/TinkleCycle/server/app.js:94:48
+    at Layer.handle [as handle_request] (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:286:9
+    at param (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:280:10)
+    at Layer.handle [as handle_request] (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:328:13)
+2022-07-30 23:27:44 125 [debug]: 클라이언트의 접속이 종료되었습니다. ::: [runtime] 5ms
+2022-07-30 23:27:44 126 [debug]: --------------------------------------------------------
+2022-07-30 23:27:51 102 [debug]: 클라이언트가 접속했습니다.
+2022-07-30 23:27:51 103 [debug]: [client] ::ffff:221.154.247.73 / Windows 10.0 / Chrome / (102.0.5005.141) / Microsoft Windows
+2022-07-30 23:27:51 104 [debug]: [GET] http://221.154.247.73:3001/page2
+2022-07-30 23:27:51 105 [error]: [Error] 페이지를 찾을 수 없습니다.
+2022-07-30 23:27:51 106 [error]: Error: 페이지를 찾을 수 없습니다.
+    at file:///C:/Users/yocas/Desktop/Down/TinkleCycle/server/app.js:94:48
+    at Layer.handle [as handle_request] (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:286:9
+    at param (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:280:10)
+    at Layer.handle [as handle_request] (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\layer.js:91:12)
+    at trim_prefix (C:\Users\yocas\Desktop\Down\TinkleCycle\server\node_modules\express\lib\router\index.js:328:13)
+2022-07-30 23:27:51 108 [debug]: 클라이언트의 접속이 종료되었습니다. ::: [runtime] 5ms
+2022-07-30 23:27:51 109 [debug]: --------------------------------------------------------
+2022-07-30 23:31:25 864 [info]: Database Pool is closed
