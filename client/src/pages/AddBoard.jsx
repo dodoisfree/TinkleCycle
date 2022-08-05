@@ -13,7 +13,7 @@
  import {Link} from 'react-router-dom';
 
  import  CancleYN from '../components/Modal/CancelYN';
- import regexHelper from '../components/Community/libs/RegexHelper';
+ import regexHelper from '../libs/RegexHelper';
  
  const AddBoardContainer = styled.div`
  width: 100%;

@@ -10,7 +10,7 @@
  import {getItem, putItem} from '../slices/CommunitySlice';
  import {useSelector,useDispatch } from "react-redux";
  import { Link, useParams, useNavigate} from 'react-router-dom';
- import regexHelper from '../components/Community/libs/RegexHelper';
+ import regexHelper from '../libs/RegexHelper';
 
  
  const AddBoardContainer = styled.div`

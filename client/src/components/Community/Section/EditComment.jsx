@@ -13,7 +13,7 @@ import { useParams,useNavigate} from 'react-router-dom';
 
 import AddBtn from '../../../assets/img/next.png'
 
-import regexHelper from '../libs/RegexHelper';
+import regexHelper from '../../../libs/RegexHelper';
 
 const CommentContainer =styled.div`
   border: 1px solid #d5d5d5;

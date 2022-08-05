@@ -12,7 +12,7 @@ import {postItem} from '../../../slices/CommentSlice';
 
 import AddBtn from '../../../assets/img/next.png'
 
-import regexHelper from '../libs/RegexHelper';
+import regexHelper from '../../../libs/RegexHelper';
 
 const CommentContainer =styled.div`
   height: 100%;
