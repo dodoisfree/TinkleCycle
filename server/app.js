@@ -18,10 +18,8 @@ import cors from "cors";
 
 import PageNotFoundException from "./exceptions/PageNotFoundException.js";
 
-import CookieController from "./controllers/CookieController.js";
-import SessionController from "./controllers/SessionController.js";
-import SendMailController from "./controllers/SendMailController.js";
-import FileUploadController from "./controllers/FileUploadController.js";
+import BicyclesController from './controllers/BicyclesController.js'
+
 
 // Express 생성
 const app = express();
@@ -92,8 +90,7 @@ app.use(serveFavicon(process.env.FAVICON_PATH));
 app.use(WebHelper());
 
 // 컨트롤러
-app.use(CookieController());
-app.use(SessionController());
+app.use(BicyclesController());
 
 /** 컨트롤러에서 에러 발생시 'next(에러객체)`를 호출 했을 때 동작할 처리 */
 app.use((err, req, res, next) => res.sendError(err));

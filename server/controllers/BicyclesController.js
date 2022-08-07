@@ -10,7 +10,7 @@ const BicyclesController = () => {
         let json = null;
 
         try {
-            json = await BicyclesService.getDeptno();
+            json = await BicyclesService.getCyclesno();
         } catch (err) {
             return next(err);
         }
