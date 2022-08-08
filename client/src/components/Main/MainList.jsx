@@ -64,9 +64,6 @@ const MainList = memo(({ rtShopId, rtShopName, pakingTotal }) => {
             <ul className="rtShopInfo">
               <li>번호 : {rtShopId}번</li>
               <li>{rtShopName} 대여소</li>
-              <li>자전거 보유 수 :                       
-                <b style={(Number(pakingTotal) === 0) ? {color: "red" } : {color: "blue"}}> {pakingTotal}</b>
-              </li>
             </ul>
           </div>
           <MainRezSet pakingTotal={pakingTotal} isOpen={isOpen} open={open}/>

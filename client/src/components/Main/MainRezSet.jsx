@@ -310,7 +310,7 @@ const MainRezSet = memo(({ pakingTotal, isOpen, open }) => {
         </div>
 
         <div className="rezSetGroup">
-          <section className="rezSetBox">
+          {/* <section className="rezSetBox">
             <label htmlFor="bicCnt">
               <h3 className="h3"><strong>수량 선택</strong></h3>
             </label>
@@ -322,7 +322,7 @@ const MainRezSet = memo(({ pakingTotal, isOpen, open }) => {
                 <span><b style={Number(pakingTotal) === 0 ? { color: "red" } : { color: "blue" }}>{pakingTotal}</b> 대 (보유수량)</span>
               </div>
             </div>
-          </section>
+          </section> */}
 
           <section className="rezSetBox">
             <label htmlFor="time">
