@@ -91,7 +91,10 @@ const Main = memo(() => {
 
     useEffect(() => {
         if (keyword === null || keyword === undefined) {
-            setSearchData(data && data.filter((it) => it.stationName.includes("강남")));
+            // 전체 검색
+            setSearchData(data && data.filter((it) => it.stationName.includes('')));
+            // 키워드 기본값 검색
+            // setSearchData(data && data.filter((it) => it.stationName.includes("강남")));
         } else {
             setSearchData(data && data.filter((it) => it.stationName.includes(String(keyword))));
         }
@@ -106,13 +109,14 @@ const Main = memo(() => {
     useEffect(() => {
         setSliceData(searchData && searchData.slice(0, page * 8));
         if (inView && !loading2) {
-            setLoading2(false);
+            setLoading2(true);
             setPage(page + 1);
             setTimeout(() => {
                 setLoading2(false);
             }, 700);
         }
     }, [searchData, inView, keyword, loading2, page]);
+    console.log(sliceData);
 
     const formik = useFormik({
         initialValues: {
