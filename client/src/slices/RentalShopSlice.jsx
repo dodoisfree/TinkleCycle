@@ -5,7 +5,7 @@ export const getBicycles = createAsyncThunk('rentalShop/getBicycles', async (pay
   let result = null;
 
   try {
-    result = await axios.get('http://localhost:3002/Bicycles');
+    result = await axios.get('http://localhost:3001/Bicycles');
   } catch (err) {
     result = rejectWithValue(err.response);
   }
