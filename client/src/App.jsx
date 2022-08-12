@@ -11,8 +11,8 @@ import FindId from './pages/Account/FindId';
 import FindPw from './pages/Account/FindPw';
 /* import GoTop from './components/GoTop'; */
 import MyPage from './pages/MyPage';
-import EditBoard from './pages/EditBoard';
-import AddBoard from './pages/AddBoard'
+import EditBoard from './pages/Board/EditBoard';
+import AddBoard from './pages/Board/AddBoard';
 import EditComment from './components/Community/Section/EditComment';
 // import Pasing from './pages/Pasing';
 
