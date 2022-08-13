@@ -4,15 +4,15 @@ import { Routes, Route } from 'react-router-dom';
 import Login from './pages/Account/Login';
 import Join from './pages/Account/Join';
 import Footer from "./components/Footer";
-import Community from './pages/Community';
+import Community from './pages/Community/Community';
 import Main from './pages/Main';
 import Attraction from './pages/Attraction';
 import FindId from './pages/Account/FindId';
 import FindPw from './pages/Account/FindPw';
 /* import GoTop from './components/GoTop'; */
 import MyPage from './pages/MyPage';
-import EditBoard from './pages/Board/EditBoard';
-import AddBoard from './pages/Board/AddBoard';
+import EditBoard from './pages/Community/EditBoard';
+import AddBoard from './pages/Community/AddBoard';
 import EditComment from './components/Community/Section/EditComment';
 // import Pasing from './pages/Pasing';
 

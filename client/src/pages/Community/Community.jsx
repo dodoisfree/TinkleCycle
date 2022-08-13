@@ -5,11 +5,11 @@
  */
 
 import React,{ memo } from 'react';
-import MenuBar from '../components/MenuBar';
+import MenuBar from '../../components/MenuBar';
 import styled from 'styled-components';
-import BoardList from '../components/Community/BoardList';
+import BoardList from '../../components/Community/BoardList';
 import { Link } from "react-router-dom";
-import writeImg from '../assets/img/edit.png';
+import writeImg from '../../assets/img/edit.png';
 
 
 const CommunityContainer = styled.div`
