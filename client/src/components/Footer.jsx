@@ -35,7 +35,7 @@ const Footer = memo(() =>{
     return (
       <div>
         <FooterContainer className='containerSize media'>
-          <span><img src={icon} alt="gitIcon" className='footerIcon'/><a href="https://github.com/TinkleCycle/TinkleCycle"> https://github.com/TinkleCycle/TinkleCycle</a></span>
+          <span><img src={icon} alt="gitIcon" className='footerIcon'/><a href="https://github.com/dodoisfree/TinkleCycle"> https://github.com/dodoisfree/TinkleCycle</a></span>
         </FooterContainer>
       </div>
   );

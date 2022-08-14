@@ -9,7 +9,7 @@ import Main from './pages/Main';
 import Attraction from './pages/Attraction';
 import FindId from './pages/Account/FindId';
 import FindPw from './pages/Account/FindPw';
-/* import GoTop from './components/GoTop'; */
+import GoTop from './components/GoTop';
 import MyPage from './pages/MyPage';
 import EditBoard from './pages/Community/EditBoard';
 import AddBoard from './pages/Community/AddBoard';
@@ -34,7 +34,7 @@ const App = memo(() => {
         <Route path='/editBoard/:id'  element={<EditBoard/>} />
         <Route path='/editComment/:id' element={<EditComment/>}/>
       </Routes>
-     {/*  <GoTop /> */}
+      <GoTop />
       <Footer/>
     </div>
   );
