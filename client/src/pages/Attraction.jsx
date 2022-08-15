@@ -5,26 +5,22 @@
  */
 import React, { memo } from 'react';
 import {Routes, Route} from 'react-router-dom';
-import styled from 'styled-components';
 
 import MenuBar from '../components/MenuBar';
 import AttractionContent from '../components/Attraction/AttractionContent';
 import AttractionMenu from '../components/Attraction/AttractionMenu';
 
-const AttractionContainer = styled.div`
-    
-`;
 const Attraction = memo(() => {
     return (
         <>
             <MenuBar />
             <AttractionMenu />
 
-            <AttractionContainer className="containerSize media">
+            <div className="containerSize media">
                 <Routes>
                     <Route path="/:api" element={<AttractionContent />} />
                 </Routes>
-            </AttractionContainer>
+            </div>
         </>
     );
 });

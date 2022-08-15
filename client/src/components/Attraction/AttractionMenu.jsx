@@ -27,7 +27,7 @@ const Gumenu = styled(NavLink)`
 const AttractionMenu = () => {
     return (
         <NavContainer className="containerSize media">
-            <Gumenu to={'/attraction/gangnam'}>강남구</Gumenu>
+            <NavLink to={'/attraction/gangnam'}>강남구</NavLink>
             <Gumenu to={'/attraction/gangdong'}>강동구</Gumenu>
             <Gumenu to={'/attraction/gangbuk'}>강북구</Gumenu>
             <Gumenu to={'/attraction/gangseo'}>강서구</Gumenu>
