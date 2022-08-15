@@ -7,7 +7,7 @@ import React from 'react';
 import { NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 
-const NavContainer = styled.nav`
+const NavContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -27,7 +27,7 @@ const Gumenu = styled(NavLink)`
 const AttractionMenu = () => {
     return (
         <NavContainer className="containerSize media">
-            <NavLink to={'/attraction/gangnam'}>강남구</NavLink>
+            <Gumenu to={'/attraction/gangnam'}>강남구</Gumenu>
             <Gumenu to={'/attraction/gangdong'}>강동구</Gumenu>
             <Gumenu to={'/attraction/gangbuk'}>강북구</Gumenu>
             <Gumenu to={'/attraction/gangseo'}>강서구</Gumenu>

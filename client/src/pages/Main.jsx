@@ -99,7 +99,7 @@ const Main = memo(() => {
             setSearchData(data && data.filter((it) => it.stationName.includes(String(keyword))));
         }
     }, [data, keyword]);
-
+    
 
     // 데이터 나눠서 출력, 무한 스크롤 구현중 (현재 로딩전 출력)
     const [loading2, setLoading2] = useState(false);
@@ -115,8 +115,8 @@ const Main = memo(() => {
                 setLoading2(false);
             }, 700);
         }
-    }, [searchData, inView, keyword, loading2, page]);
-    console.log(sliceData);
+    }, [inView, loading2, page, searchData, sliceData.length]);
+    console.log(searchData);
 
     const formik = useFormik({
         initialValues: {
@@ -149,7 +149,7 @@ const Main = memo(() => {
                     {error ? (
                         <p>에러!</p>
                     ) : (
-                        sliceData &&
+                        sliceData.length !== 0 ?
                         sliceData.map((
                                 { stationId, stationName, parkingBikeTotCnt }, i) => {
                                 let rtShopId = stationId.substring(3, stationId.length);
@@ -158,7 +158,7 @@ const Main = memo(() => {
                                     <MainList key={i} rtShopId={rtShopId} rtShopName={rtShopName} pakingTotal={parkingBikeTotCnt} />
                                 );
                             }
-                        )
+                        ) : (<p>검색 결과 없음.</p>)
                     )}
                 </div>
             </div>
