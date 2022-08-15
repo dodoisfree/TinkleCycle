@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect, useCallback } from "react";
+import React, { memo, useState, useEffect } from "react";
 import MenuBar from "../components/MenuBar";
 import { useSelector, useDispatch } from "react-redux";
 import { getBicycles } from "../slices/RentalShopSlice";
@@ -100,7 +100,7 @@ const Main = memo(() => {
         }
     }, [data, keyword]);
     
-
+    /** 더보기 버튼 추가 후 클릭 시 데이터 추가로 변경 예정 */
     // 데이터 나눠서 출력, 무한 스크롤 구현중 (현재 로딩전 출력)
     const [loading2, setLoading2] = useState(false);
     const [page, setPage] = useState(0);
@@ -115,8 +115,8 @@ const Main = memo(() => {
                 setLoading2(false);
             }, 700);
         }
-    }, [inView, loading2, page, searchData, sliceData.length]);
-    console.log(searchData);
+    }, [inView, loading2, page, searchData]);
+    console.log(sliceData);
 
     const formik = useFormik({
         initialValues: {
@@ -149,7 +149,7 @@ const Main = memo(() => {
                     {error ? (
                         <p>에러!</p>
                     ) : (
-                        sliceData.length !== 0 ?
+                        sliceData &&
                         sliceData.map((
                                 { stationId, stationName, parkingBikeTotCnt }, i) => {
                                 let rtShopId = stationId.substring(3, stationId.length);
@@ -158,7 +158,7 @@ const Main = memo(() => {
                                     <MainList key={i} rtShopId={rtShopId} rtShopName={rtShopName} pakingTotal={parkingBikeTotCnt} />
                                 );
                             }
-                        ) : (<p>검색 결과 없음.</p>)
+                        )
                     )}
                 </div>
             </div>
