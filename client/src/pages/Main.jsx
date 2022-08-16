@@ -162,8 +162,10 @@ const Main = memo(() => {
                     )}
                 </div>
             </div>
+            <p> 더 보기 </p>
             {/* 스크롤 시 타겟 관측 영역 */}
-            <div ref={ref}></div>
+            <div ref={ref}></div> 
+
         </MainCss>
     );
 });
