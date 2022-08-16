@@ -103,20 +103,27 @@ const Main = memo(() => {
     /** 더보기 버튼 추가 후 클릭 시 데이터 추가로 변경 예정 */
     // 데이터 나눠서 출력, 무한 스크롤 구현중 (현재 로딩전 출력)
     const [loading2, setLoading2] = useState(false);
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
     const [sliceData, setSliceData] = useState([]);
 
     useEffect(() => {
         setSliceData(searchData && searchData.slice(0, page * 8));
-        if (inView && !loading2) {
+        // if (inView && !loading2) {
+        //     setLoading2(true);
+        //     setPage(page + 1);
+        //     setTimeout(() => {
+        //         setLoading2(false);
+        //     }, 700);
+        // }
+    }, [inView, page, searchData]);
+    console.log(sliceData);
+    const addData = React.useCallback(() => {
             setLoading2(true);
             setPage(page + 1);
             setTimeout(() => {
                 setLoading2(false);
             }, 700);
-        }
-    }, [inView, loading2, page, searchData]);
-    console.log(sliceData);
+    }, [page]);
 
     const formik = useFormik({
         initialValues: {
@@ -161,10 +168,11 @@ const Main = memo(() => {
                         )
                     )}
                 </div>
+                <button type="button" onClick={addData}>더 보기</button>
             </div>
-            <p> 더 보기 </p>
-            {/* 스크롤 시 타겟 관측 영역 */}
-            <div ref={ref}></div> 
+
+            {/* 스크롤 시 타겟 관측 영역
+            <div ref={ref}></div>   */}
 
         </MainCss>
     );
