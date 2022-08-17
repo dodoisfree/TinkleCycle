@@ -10,6 +10,7 @@ import MainList from "../components/Main/MainList";
 import Search1 from "../assets/img/search-w.png";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import viewMore from '../assets/img/viewMore.png';
 
 const MainCss = styled.div`
     .rtShopArea {
@@ -66,6 +67,10 @@ const MainCss = styled.div`
                 border-bottom-right-radius: 15px;
             }
         }
+    }
+    .viewMore {
+        background-image: url(${viewMore});
+        background-size: 100px;
     }
 `;
 
@@ -168,7 +173,7 @@ const Main = memo(() => {
                         )
                     )}
                 </div>
-                <button type="button" onClick={addData}>더 보기</button>
+                <input className="viewMore" type="button" onClick={addData} />
             </div>
 
             {/* 스크롤 시 타겟 관측 영역
