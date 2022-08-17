@@ -69,8 +69,17 @@ const MainCss = styled.div`
         }
     }
     .viewMore {
-        background-image: url(${viewMore});
-        background-size: 100px;
+        width: 100%;
+        height: 100%;
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 30px;
+        border: 1px solid #98d6f6;
+        background-color: #98d6f6;
+        border-radius: 10px;
+        &:hover {
+            background-color: #228ae6;
+        }
     }
 `;
 
@@ -173,7 +182,7 @@ const Main = memo(() => {
                         )
                     )}
                 </div>
-                <input className="viewMore" type="button" onClick={addData} />
+                <button className="viewMore" type="button" onClick={addData}><b>•••</b><br/>더 보기</button>
             </div>
 
             {/* 스크롤 시 타겟 관측 영역
