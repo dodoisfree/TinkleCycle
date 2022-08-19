@@ -74,8 +74,8 @@ const MainCss = styled.div`
         font-size: 20px;
         line-height: 30px;
         margin-bottom: 30px;
-        border: 1px solid #98d6f6;
-        background-color: #98d6f6;
+        border: 1px solid #eee;
+        background-color: #eee;
         border-radius: 10px;
         &:hover {
             background-color: #228ae6;
@@ -130,7 +130,7 @@ const Main = memo(() => {
         //     }, 700);
         // }
     }, [inView, page, searchData]);
-    console.log(sliceData);
+    //console.log(sliceData);
     const addData = React.useCallback(() => {
             setLoading2(true);
             setPage(page + 1);

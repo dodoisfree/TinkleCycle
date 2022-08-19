@@ -135,9 +135,9 @@ const onDeleteClick =e =>{
       </div>
       <div onClick={toggleComment}>
         <img className="iconImg" src={comment} alt="commentOpen" />
-        <div style={{display: isOpen ? 'block' : 'none'}}>
-        <CommentList/>
-      </div>
+        <div className="commentOpen" style={{display: isOpen ? 'block' : 'none'}}>
+            <CommentList/>
+        </div>
       </div>
     </BVCss>
   );
