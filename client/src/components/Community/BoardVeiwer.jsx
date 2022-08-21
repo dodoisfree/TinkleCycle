@@ -3,6 +3,8 @@ import userImage from "../../assets/img/account-LB.png";
 import more from "../../assets/img/more.png";
 import comment from "../../assets/img/comment.png";
 import CommentList from "./CommentList";
+import { getList } from "../../slices/CommentSlice";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import LikeBtn from "./Section/LikeBtn";
@@ -62,12 +64,20 @@ const BVCss = styled.div`
         }
     }
     .commentBox {
-        background-color: gray;
+        background-color: aliceblue;
     }
 `;
 
-const BoardVeiwer = memo(
-    ({ id, title, object, content, deleteItem, dispatch }) => {
+const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
+        /** 리덕스 관련 초기화 */
+        const dispatch = useDispatch();
+        const { data } = useSelector((state) => state.comment);
+
+        /** 페이지 마운트와 동시에 실행되는 hook -> 리덕스를 통해 getList를 통해 data 값을 가져와서 목록을 조회한다 */
+        React.useEffect(() => {
+            dispatch(getList());
+        }, [dispatch]);
+
         const navigate = useNavigate();
 
         // editDelBtn 버튼 토글 구현
@@ -144,7 +154,17 @@ const BoardVeiwer = memo(
                     <section onClick={toggleComment}>
                         <img className="iconImg" src={comment} alt="commentOpen" />
                         <div className="commentOpen" style={{ display: isOpen ? "block" : "none" }}>
-                            <CommentList />
+                        { data && data.length > 0 ? (
+        data.map(({id, comment}, i) => {
+          return (
+            <CommentList  key={i} id={id} comment={comment} dispatch={dispatch} deleteItem={deleteItem} />
+          );
+        })
+      ) : (
+        <ul>
+          <li>아직 댓글이 없습니다.</li>
+        </ul>
+      )}
                         </div>
                     </section>
                 </div>

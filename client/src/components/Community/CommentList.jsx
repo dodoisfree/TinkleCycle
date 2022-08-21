@@ -50,7 +50,7 @@ const CommentList = memo(() => {
 
   return (
     <>
-  <Spinner visible={loading} />
+    <Spinner visible={loading} />
     <CommentListContainer>
       {error ? (
         <ErrorView error={error} />
