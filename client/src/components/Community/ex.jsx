@@ -96,7 +96,9 @@ return (
       <ul className="ul" style={isOpen ? { height: "300px" } : { height: "100px" }}>
         <li className="writeBtn"><img src={writeImg} alt="writImg"/></li>
         <li className="userInfo"><img src={userImage} alt="userAccount"/></li>
-        <button onClick={toggleComment}><img src={userImage} alt="commentOpen"/></button>
+        <button onClick={toggleComment}>
+            {/* <img src={comment} alt="commentOpen"/> */}
+        </button>
         {isOpen && (
           <div>
             <li>댓글창</li>
