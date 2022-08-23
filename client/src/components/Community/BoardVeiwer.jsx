@@ -2,10 +2,15 @@ import React, { memo, useCallback, useState } from "react";
 import userImage from "../../assets/img/account-LB.png";
 import more from "../../assets/img/more.png";
 import comment from "../../assets/img/comment.png";
-import CommentList from "./CommentList";
+import { getList } from "../../slices/CommentSlice";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import LikeBtn from "./Section/LikeBtn";
+import ErrorView from "../ErrorView";
+import AddComment from "../Community/Section/AddComment";
+import CommentListInfo from "./CommentListInfo";
+import commentBg from "../../assets/img/comment_bg.png";
 
 const BVCss = styled.div`
     width: 95%;
@@ -68,12 +73,29 @@ const BVCss = styled.div`
             flex-direction: row;
             justify-content: left;
         }
-
+        .commentListBox {
+            display: flex;
+            .Btn {
+                background-color: white;
+                border: none;
+            }
+        }
+        .editDelBtnBox {
+            background-image: url(${commentBg}) no-repeat;
+            .editDelBtnItem {
+                width: 25px;
+                height: 25px;
+                .editDelBtnImg {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+        }
     }
 `;
 
 const BoardVeiwer = memo(
-    ({ id, title, object, content, deleteItem, dispatch }) => {
+    ({ id, title, object, content, deleteItem }) => {
         const navigate = useNavigate();
 
         // editDelBtn 버튼 토글 구현
@@ -114,6 +136,14 @@ const BoardVeiwer = memo(
             }
         };
 
+        /** 리덕스 관련 초기화 */
+        const dispatch = useDispatch();
+        const { data, loading, error } = useSelector((state) => state.comment);
+
+        /** 페이지 마운트와 동시에 실행되는 hook -> 리덕스를 통해 getList를 통해 data 값을 가져와서 목록을 조회한다 */
+        React.useEffect(() => {
+            dispatch(getList());
+        }, [dispatch]);
         return (
             <BVCss key={id}>
                 <ul>
@@ -153,7 +183,21 @@ const BoardVeiwer = memo(
                         </div>
                     </div>
                     <div className="commentOpen" style={{ display: isOpen ? "block" : "none" }}>
-                        <CommentList />
+                    {error ? (
+                    <ErrorView error={error} />
+                ) : data && data.length > 0 ? (
+                    data.map(({ id, comment }, i) => {
+                        return ( <CommentListInfo key={i} id={id} comment={comment} dispatch={dispatch} deleteItem={deleteItem} />
+                        );
+                    })
+                ) : (
+                    <ul>
+                        <li>아직 댓글이 없습니다.</li>
+                    </ul>
+                )}
+                <div>
+                    <AddComment />
+                </div>
                     </div>
                 </div>
             </BVCss>
