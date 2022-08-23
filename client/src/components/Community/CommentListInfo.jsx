@@ -5,15 +5,19 @@ import account from "../../assets/img/account-LB.png";
 import styled from "styled-components";
 
 const CommentListInfoContainer = styled.div`
-.editDelBtnBox{
-  width: 70px;
-  height: 50px;
-  .editDelBtnItem{
-  margin: 0 auto;
-  height: 12px;
-  padding: 6px;
-}
-}
+    .editDelBtnBox {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        .editDelBtnItem {
+            &:hover {
+                color: white;
+                font-weight: bold;
+                background-color: #228ae6;
+            }
+        }
+    }
 `;
 const CommentListInfo = memo( ({ id, comment, dispatch, deleteItem }) => {
     const navigate = useNavigate();
@@ -58,17 +62,14 @@ const CommentListInfo = memo( ({ id, comment, dispatch, deleteItem }) => {
           </li>
           {editDelBtn && (
             <ul className="editDelBtnBox">
-              <li className="editDelBtnItem">
+              <li className="editDelBtnItem" data-id={id} onClick={onEditClick}>
                 {/* data-id로 일련번호 숨겨놓기 -어떤항목을 수정할지 */}
-                <div className="moreBtn" data-id={id} onClick={onEditClick}>
-                  수정
-                </div>
+                수정
+
               </li>
-              <li className="editDelBtnItem">
+              <li className="editDelBtnItem" data-id={id} /*  data-comment 정말 이걸 삭제하는지 물어보기 위해 숨겨놓기 */ data-comment={comment} onClick={onDeleteClick}>
                 {/* data-id로 일련번호 숨겨놓기 -어떤항목을 삭제할지 */}
-                <div className="moreBtn" data-id={id} /*  data-comment 정말 이걸 삭제하는지 물어보기 위해 숨겨놓기 */ data-comment={comment} onClick={onDeleteClick}>
-                  삭제
-                </div>
+                삭제
               </li>
             </ul>
           )}

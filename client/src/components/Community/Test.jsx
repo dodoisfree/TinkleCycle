@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import styled from "styled-components";
+//import styled from "styled-components";
 import { useSelector, useDispatch } from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {getList, deleteItem} from '../../slices/CommunitySlice';
@@ -17,7 +17,7 @@ import AddComment from "./Section/EditComment";
 
 
 
-const BoardList = memo(() => {
+const Test = memo(() => {
     const navigate = useNavigate();
 
 /** 리덕스 관련 초기화 */
@@ -110,3 +110,5 @@ return (
     </>
   );
   });
+
+  export default Test;

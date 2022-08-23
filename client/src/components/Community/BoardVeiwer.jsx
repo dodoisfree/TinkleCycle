@@ -1,7 +1,5 @@
 import React, { memo, useCallback, useState } from "react";
-import userImage from "../../assets/img/account-LB.png";
-import more from "../../assets/img/more.png";
-import comment from "../../assets/img/comment.png";
+
 import { getList } from "../../slices/CommentSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +8,11 @@ import LikeBtn from "./Section/LikeBtn";
 import ErrorView from "../ErrorView";
 import AddComment from "../Community/Section/AddComment";
 import CommentListInfo from "./CommentListInfo";
+import Spinner from "../Spinner";
+
+import userImage from "../../assets/img/account-LB.png";
+import more from "../../assets/img/more.png";
+import comment from "../../assets/img/comment.png";
 import commentBg from "../../assets/img/comment_bg.png";
 
 const BVCss = styled.div`
@@ -145,6 +148,7 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
     }, [dispatch]);
     return (
         <BVCss key={id}>
+            <Spinner visible={loading} />
             <ul>
                 <li className="userInfo">
                     <img
