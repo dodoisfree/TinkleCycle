@@ -9,10 +9,15 @@ import {Routes, Route} from 'react-router-dom';
 import MenuBar from '../components/MenuBar';
 import AttractionContent from '../components/Attraction/AttractionContent';
 import AttractionMenu from '../components/Attraction/AttractionMenu';
+import styled from 'styled-components';
+
+const ATRT = styled.div`
+    background-color: aliceblue;
+`;
 
 const Attraction = memo(() => {
     return (
-        <>
+        <ATRT>
             <MenuBar />
             <AttractionMenu />
 
@@ -21,7 +26,7 @@ const Attraction = memo(() => {
                     <Route path="/:api" element={<AttractionContent />} />
                 </Routes>
             </div>
-        </>
+        </ATRT>
     );
 });
 
