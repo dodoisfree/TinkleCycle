@@ -20,8 +20,7 @@ const Attraction = memo(() => {
         <ATRT>
             <MenuBar />
             <AttractionMenu />
-
-            <div className="containerSize media">
+            <div className='containerSize media'>
                 <Routes>
                     <Route path="/:api" element={<AttractionContent />} />
                 </Routes>
