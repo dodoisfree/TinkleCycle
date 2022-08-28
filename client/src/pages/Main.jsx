@@ -133,8 +133,8 @@ const Main = memo(() => {
     //console.log(sliceData);
     const addData = React.useCallback(() => {
             setLoading2(true);
-            setPage(page + 1);
             setTimeout(() => {
+                setPage(page + 1);
                 setLoading2(false);
             }, 700);
     }, [page]);
@@ -149,7 +149,11 @@ const Main = memo(() => {
                 .max(20, "20자 이내로 입력해주세요."),
         }),
         onSubmit: (values) => {
-            setKeyword(values.keyword);
+            setLoading2(true);
+            setTimeout(() => {
+                setKeyword(values.keyword);
+                setLoading2(false);
+            }, 700);
         },
     });
 
