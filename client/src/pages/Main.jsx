@@ -119,6 +119,13 @@ const Main = memo(() => {
     const [loading2, setLoading2] = useState(false);
     const [page, setPage] = useState(1);
     const [sliceData, setSliceData] = useState([]);
+    const addData = React.useCallback(() => {
+        setLoading2(true);
+        setTimeout(() => {
+            setPage(page + 1);
+            setLoading2(false);
+        }, 700);
+    }, [page]);
 
     useEffect(() => {
         setSliceData(searchData && searchData.slice(0, page * 8));
@@ -131,13 +138,7 @@ const Main = memo(() => {
         // }
     }, [inView, page, searchData]);
     //console.log(sliceData);
-    const addData = React.useCallback(() => {
-            setLoading2(true);
-            setTimeout(() => {
-                setPage(page + 1);
-                setLoading2(false);
-            }, 700);
-    }, [page]);
+
 
     const formik = useFormik({
         initialValues: {
