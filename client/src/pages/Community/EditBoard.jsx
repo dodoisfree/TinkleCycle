@@ -3,69 +3,67 @@
  * @description: 게시글 작성을 위한 구현
  * @author: 천경재
  */
- import React,{ memo,useEffect } from 'react';
- import styled from 'styled-components';
- import Spinner from '../../components/Spinner';
- import ErrorView from '../../components/ErrorView';
- import {getItem, putItem} from '../../slices/CommunitySlice';
- import {useSelector,useDispatch } from "react-redux";
- import { Link, useParams, useNavigate} from 'react-router-dom';
- import regexHelper from '../../libs/RegexHelper';
-
+ import React, { memo, useEffect } from "react";
+ import styled from "styled-components";
+ import Spinner from "../../components/Spinner";
+ import ErrorView from "../../components/ErrorView";
+ import { getItem, putItem } from "../../slices/CommunitySlice";
+ import { useSelector, useDispatch } from "react-redux";
+ import { Link, useParams, useNavigate } from "react-router-dom";
+ import regexHelper from "../../libs/RegexHelper";
  
  const AddBoardContainer = styled.div`
- width: 100%;
- .selectBox{
-   width: 100%;
-   border: 1px solid #d5d5d5;
-   height: 30px;
-   font-size: ${props => props.theme.size.S};
-   color: #535353;
- }
- .titleArea{
-   width: 100%;
-   border: 1px solid #d5d5d5;
-   height: 30px;
-   font-size: ${props => props.theme.size.S};
-   color: #535353;
-   margin-top: 10px;
-   padding: 0 5px;
-   box-sizing: border-box;
-  
- }
- .textArea{
-   width: 100%;
-   border: 1px solid #d5d5d5;
-   font-size: ${props => props.theme.size.S};
-   color: #535353;
-   margin-top: 10px;
-   padding: 5px;
-   box-sizing: border-box;
-   height: 500px;
- }
+     margin-top: 40px;
+     .selectBox {
+         width: 100%;
+         border: 1px solid #d5d5d5;
+         height: 30px;
+         font-size: ${(props) => props.theme.size.S};
+         color: #535353;
+     }
+     .titleArea {
+         width: 100%;
+         border: 1px solid #d5d5d5;
+         height: 30px;
+         font-size: ${(props) => props.theme.size.S};
+         color: #535353;
+         margin-top: 10px;
+         padding: 0 5px;
+         box-sizing: border-box;
+     }
+     .textArea {
+         width: 100%;
+         border: 1px solid #d5d5d5;
+         font-size: ${(props) => props.theme.size.S};
+         color: #535353;
+         margin-top: 10px;
+         padding: 5px;
+         box-sizing: border-box;
+         height: 500px;
+     }
  `;
-  const ButtonBox = styled.div`
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  margin-bottom: 10px;
- .cancelBtn{
- border: 1px solid #f6f3f2;
- background-color: #f6f3f2;
- padding: 7px 20px;
- margin-right: 10px;
- }
- .addBtn{
-   border: 1px solid #d5d5d5;
-   background-color: #d5d5d5;
-   color: white;
-   padding: 4px 10px;
-   &:hover{
-     background-color: #98D6F6;
-     border: 1px solid #98D6F6;
-   }
- }
-  `;
+ const ButtonBox = styled.div`
+     display: flex;
+     justify-content: right;
+     align-items: center;
+     margin-bottom: 10px;
+     .cancelBtn {
+         border: 1px solid #f6f3f2;
+         background-color: #f6f3f2;
+         padding: 7px 20px;
+         margin-right: 10px;
+     }
+     .addBtn {
+         border: 1px solid #d5d5d5;
+         background-color: #d5d5d5;
+         color: white;
+         padding: 4px 10px;
+         &:hover {
+             background-color: #98d6f6;
+             border: 1px solid #98d6f6;
+         }
+     }
+ `;
  
  
  const AddCommunity = memo(() =>{

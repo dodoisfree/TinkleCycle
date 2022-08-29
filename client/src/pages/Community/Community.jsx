@@ -43,9 +43,7 @@ const Community = memo(() =>{
       <CommunityContainer> 
         <MenuBar/>
         <div className='containerSize media'>
-        <div className="addBoardIcon">
           <Link to='/addBoard' className="fixIcon"><img className="iconImg" src={writeImg} alt="writImg"/></Link>
-        </div>  
           <BoardList/>
         </div>
       </CommunityContainer>
