@@ -11,10 +11,9 @@
  import { postItem } from "../../slices/CommunitySlice";
  import { useSelector, useDispatch } from "react-redux";
  import { Link } from "react-router-dom";
- import { useFormik } from "formik";
- import * as Yup from "yup";
  
  import CancleYN from "../../components/Modal/CancelYN";
+ import regexHelper from "../../libs/RegexHelper";
  
  const AddBoardContainer = styled.div`
      margin-top: 40px;
@@ -84,31 +83,48 @@
      const dispatch = useDispatch();
      const { loading, error } = useSelector((state) => state.community);
  
-     /**글 쓰기 */
-     const formik = useFormik({
-         initialValues: {
-             object: "",
-             title: "",
-             content: "",
-         },
-         validationSchema: Yup.object({
-             object: Yup.string().required("필수 입력사항입니다."),
-             title: Yup.string().required("필수 입력사항입니다."),
-             content: Yup.string().required("필수 입력사항입니다."),
-         }),
-         onSubmit: (values) => {
+     /**<form>의 submit 버튼이 눌러졌을 때 호출될 이벤트 핸들러 */
+     const onSubmit = React.useCallback(
+         (e) => {
+             e.preventDefault();
+ 
+             // 이벤트가 발생한 폼 객체
+             const current = e.target;
+             //입력값에 대한 유효성 검사
+             try {
+                 regexHelper.value(current.object, "주제를 선택하세요.");
+ 
+                 regexHelper.value(current.title, "제목을 입력하세요");
+                 regexHelper.minLength(current.title, 2, "제목은 최소 2글자 이상 입력해야합니다.");
+                 regexHelper.maxLength(current.title, 10, "제목은 최대 10글자 까지 가능합니다.");
+ 
+                 regexHelper.value(current.content, "내용을 입력하세요.");
+                 regexHelper.minLength(current.content, 2, "내용은 최소 2글자 이상 입력해야합니다.");
+                 regexHelper.maxLength(current.content, 150, "내용은 최대 150글자 까지 가능합니다." );
+ 
+                 window.alert("게시글이 등록되었습니다.");
+             } catch (e) {
+                 window.alert("게시글을 저장하지 못했습니다");
+                 e.field.focus();
+                 return;
+             }
+ 
+             // 리덕스(Ajax처리)를 통해 데이터 저장 요청 --> 처리가 완료된 후 목록 페이지로 강제 이동한다.
+             // 비동기 처리이기 때문에 리덕스의 함수를 dispatch한 다음에 그에 대한 후속 처리를 한다면
+             // 리덕스 자체가 promise객체이기 때문에 then을 사용해야한다
              dispatch(
                  postItem({
-                     object: values.object,
-                     title: values.title,
-                     content: values.content,
+                     object: current.object.value,
+                     title: current.title.value,
+                     content: current.content.value,
                  })
              ).then(() => {
-                 window.alert("게시글이 등록되었습니다.");
+                 // then 함수를 처리하고 콜백을 넣어야함
                  navigate("/community");
              });
          },
-     });
+         [dispatch, navigate]
+     );
  
      return (
          <AddBoardContainer className="containerSize inside">
@@ -116,8 +132,8 @@
              {error ? (
                  <ErrorView error={error} />
              ) : (
-                 <form onSubmit={formik.handleSubmit}>
-                     <select className="selectBox" name="object" selectedvalue={formik.values.object} {...formik.getFieldProps("object")}>
+                 <form onSubmit={onSubmit}>
+                     <select className="selectBox" name="object">
                          <option value="">게시글 주제 선택</option>
                          <option value="궁금해요">궁금해요</option>
                          <option value="함께해요">함께해요</option>
@@ -125,15 +141,19 @@
                          <option value="기타">기타</option>
                      </select>
  
-                     <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." value={formik.values.title} {...formik.getFieldProps("title")} />
-                     <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." value={formik.values.content} {...formik.getFieldProps("content")} />
+                     <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." />
+                     <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." />
  
                      <ButtonBox>
                          {modal && (
                              <CancleYN modal={modal} setModal={setModal} />
                          )}
-                         <Link className="cancelBtn" onClick={onModalOpen} to="/community">취소하기</Link>
-                         <button className="addBtn" type="submit">등록하기</button>
+                         <Link className="cancelBtn" onClick={onModalOpen} to="/community">
+                             취소하기
+                         </Link>
+                         <button className="addBtn" type="submit">
+                             등록하기
+                         </button>
                      </ButtonBox>
                  </form>
              )}
