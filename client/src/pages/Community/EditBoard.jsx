@@ -6,7 +6,6 @@
 import React, { memo, useEffect } from "react";
 import styled from "styled-components";
 import Spinner from "../../components/Spinner";
-import ErrorView from "../../components/ErrorView";
 import { getItem, putItem } from "../../slices/CommunitySlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams, useNavigate } from "react-router-dom";
@@ -108,29 +107,35 @@ const AddCommunity = memo(() => {
         },
     });
 
+    console.log(data);
+
     return (
         <AddBoardContainer className="containerSize inside">
             <Spinner visible={loading} />
             {error ? (
-                <ErrorView error={error} />
+                <p>에러!</p>
             ) : (
-                <form onSubmit={formik.handleSubmit}>
-                    <select className="selectBox" name="object" selectedvalue={data?.object} {...formik.getFieldProps("object")}>
-                        <option value="">게시글 주제 선택</option>
-                        <option value="궁금해요">궁금해요</option>
-                        <option value="함께해요">함께해요</option>
-                        <option value="자랑해요">자랑해요</option>
-                        <option value="기타">기타</option>
-                    </select>
-
-                    <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." defaultValue={data?.title} {...formik.getFieldProps("title")} />
-                    <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." defaultValue={data?.content} {...formik.getFieldProps("content")} />
-
-                    <ButtonBox>
-                        <Link className="cancelBtn" to="/community">취소</Link>
-                        <button className="addBtn" type="submit">수정하기</button>
-                    </ButtonBox>
-                </form>
+                data && data.map((v, i) => {
+                    return (
+                        <form key={i} onSubmit={formik.handleSubmit}>
+                            <select className="selectBox" name="object" selectedvalue={v.object} {...formik.getFieldProps("object")}>
+                                <option value="">게시글 주제 선택</option>
+                                <option value="궁금해요">궁금해요</option>
+                                <option value="함께해요">함께해요</option>
+                                <option value="자랑해요">자랑해요</option>
+                                <option value="기타">기타</option>
+                            </select>
+    
+                            <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." defaultValue={v.title} {...formik.getFieldProps("title")} />
+                            <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." defaultValue={v.content} {...formik.getFieldProps("content")} />
+    
+                            <ButtonBox>
+                                <Link className="cancelBtn" to="/community">취소</Link>
+                                <button className="addBtn" type="submit">수정하기</button>
+                            </ButtonBox>
+                        </form>
+                    );
+                })
             )}
         </AddBoardContainer>
     );
