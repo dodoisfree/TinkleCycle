@@ -107,8 +107,6 @@ const AddCommunity = memo(() => {
         },
     });
 
-    console.log(data);
-
     return (
         <AddBoardContainer className="containerSize inside">
             <Spinner visible={loading} />
@@ -118,7 +116,7 @@ const AddCommunity = memo(() => {
                 data && data.map((v, i) => {
                     return (
                         <form key={i} onSubmit={formik.handleSubmit}>
-                            <select className="selectBox" name="object" selectedvalue={v.object} {...formik.getFieldProps("object")}>
+                            <select className="selectBox" name="object" selectValue={v.object} {...formik.getFieldProps("object")}>
                                 <option value="">게시글 주제 선택</option>
                                 <option value="궁금해요">궁금해요</option>
                                 <option value="함께해요">함께해요</option>
