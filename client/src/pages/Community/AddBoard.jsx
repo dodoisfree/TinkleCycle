@@ -117,12 +117,12 @@
                  <ErrorView error={error} />
              ) : (
                  <form onSubmit={formik.handleSubmit}>
-                     <select className="selectBox" name="object" selectedvalue={formik.values.object} {...formik.getFieldProps("object")}>
-                         <option value="">게시글 주제 선택</option>
-                         <option value="궁금해요">궁금해요</option>
-                         <option value="함께해요">함께해요</option>
-                         <option value="자랑해요">자랑해요</option>
-                         <option value="기타">기타</option>
+                     <select className="selectBox" name="object" selectedValue={formik.values.object} {...formik.getFieldProps("object")}>
+                        <option value="">게시글 주제 선택</option>
+                        <option value="question">궁금해요</option>
+                        <option value="together">함께해요</option>
+                        <option value="boast">자랑해요</option>
+                        <option value="etc">기타</option>
                      </select>
  
                      <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." value={formik.values.title} {...formik.getFieldProps("title")} />

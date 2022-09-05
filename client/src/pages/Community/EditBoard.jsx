@@ -93,9 +93,9 @@ const AddCommunity = memo(() => {
     /**글 쓰기 */
     const formik = useFormik({
         initialValues: {
-            object: "",
-            title: "",
-            content: "",
+            object: data.object,
+            title: data.title,
+            content: data.content,
         },
         validationSchema: Yup.object({
             object: Yup.string().required("필수 입력사항입니다."),
@@ -123,16 +123,16 @@ const AddCommunity = memo(() => {
                 <p>에러!</p>
             ) : (
                         <form onSubmit={formik.handleSubmit}>
-                            <select className="selectBox" name="object" selectValue={String(data?.object)} {...formik.getFieldProps("object")}>
+                            <select className="selectBox" name="object" selectedValue={formik.values.object} {...formik.getFieldProps("object")}>
                                 <option value="">게시글 주제 선택</option>
                                 <option value="궁금해요">궁금해요</option>
-                                <option value="함께해요">함께해요</option>
-                                <option value="자랑해요">자랑해요</option>
-                                <option value="기타">기타</option>
+                                <option value="together">함께해요</option>
+                                <option value="boast">자랑해요</option>
+                                <option value="etc">기타</option>
                             </select>
     
-                            <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." value={data?.title} {...formik.getFieldProps("title")} />
-                            <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." defaultValue={data?.content} {...formik.getFieldProps("content")} />
+                            <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." defaultValue={formik.values.title} {...formik.getFieldProps("title")} />
+                            <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." defaultValue={formik.values.content} {...formik.getFieldProps("content")} />
     
                             <ButtonBox> 
                                 <Link className="cancelBtn" to="/community">취소</Link>
