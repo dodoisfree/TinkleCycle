@@ -10,7 +10,6 @@ import MainList from "../components/Main/MainList";
 import Search1 from "../assets/img/search-w.png";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import viewMore from '../assets/img/viewMore.png';
 
 const MainCss = styled.div`
     .rtShopArea {

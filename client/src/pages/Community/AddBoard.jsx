@@ -17,7 +17,7 @@
  import CancleYN from "../../components/Modal/CancelYN";
  
  const AddBoardContainer = styled.div`
-     margin-top: 40px;
+     padding-top: 30px;
      .selectBox {
          width: 100%;
          border: 1px solid #d5d5d5;
@@ -44,6 +44,16 @@
          padding: 5px;
          box-sizing: border-box;
          height: 500px;
+     }
+     .alert {
+        display: block;
+        width: auto;
+        height: 20px;
+         font-size: 12px;
+         line-height: 20px;
+         color: red;
+         margin: 9px 0px 2px;
+         padding-left: 10px;
      }
  `;
  const ButtonBox = styled.div`
@@ -97,16 +107,16 @@
              content: Yup.string().required("필수 입력사항입니다."),
          }),
          onSubmit: (values) => {
-             dispatch(
-                 postItem({
-                     object: values.object,
-                     title: values.title,
-                     content: values.content,
-                 })
-             ).then(() => {
-                 window.alert("게시글이 등록되었습니다.");
-                 navigate("/community");
-             });
+            dispatch(
+                postItem({
+                    object: values.object,
+                    title: values.title,
+                    content: values.content,
+                })
+            ).then(() => {
+                window.alert("게시글이 등록되었습니다.");
+                navigate("/community");
+            });
          },
      });
  
@@ -124,9 +134,12 @@
                         <option value="boast">자랑해요</option>
                         <option value="etc">기타</option>
                      </select>
+                     {formik.touched.object ? (<span className="alert">{formik.errors.object}</span>) : null}
  
                      <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." value={formik.values.title} {...formik.getFieldProps("title")} />
+                     {formik.touched.title ? (<span className="alert">{formik.errors.title}</span>) : null}
                      <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." value={formik.values.content} {...formik.getFieldProps("content")} />
+                     {formik.touched.content ? (<span className="alert">{formik.errors.content}</span>) : null}
  
                      <ButtonBox>
                          {modal && (
