@@ -115,7 +115,7 @@
                 })
             ).then(() => {
                 window.alert("게시글이 등록되었습니다.");
-                navigate("/community");
+                navigate("/community", { replace: true });
             });
          },
      });
@@ -138,6 +138,7 @@
  
                      <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." value={formik.values.title} {...formik.getFieldProps("title")} />
                      {formik.touched.title ? (<span className="alert">{formik.errors.title}</span>) : null}
+
                      <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." value={formik.values.content} {...formik.getFieldProps("content")} />
                      {formik.touched.content ? (<span className="alert">{formik.errors.content}</span>) : null}
  

@@ -41,6 +41,16 @@ const AddBoardContainer = styled.div`
         box-sizing: border-box;
         height: 500px;
     }
+    .alert {
+        display: block;
+        width: auto;
+        height: 20px;
+         font-size: 12px;
+         line-height: 20px;
+         color: red;
+         margin: 9px 0px 2px;
+         padding-left: 10px;
+    }
 `;
 const ButtonBox = styled.div`
     display: flex;
@@ -111,7 +121,7 @@ const AddCommunity = memo(() => {
                 })
             ).then(() => {
                 window.alert("게시글이 수정되었습니다.");
-                navigate("/community");
+                navigate("/community", { replace: true });
             });
         },
     });
@@ -130,10 +140,13 @@ const AddCommunity = memo(() => {
                                 <option value="boast">자랑해요</option>
                                 <option value="etc">기타</option>
                             </select>
-    
+                            {formik.touched.object ? (<span className="alert">{formik.errors.object}</span>) : null}
+
                             <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." defaultValue={formik.values.title} {...formik.getFieldProps("title")} />
+                            {formik.touched.title ? (<span className="alert">{formik.errors.title}</span>) : null}
+
                             <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." defaultValue={formik.values.content} {...formik.getFieldProps("content")} />
-    
+                            {formik.touched.content ? (<span className="alert">{formik.errors.content}</span>) : null}
                             <ButtonBox> 
                                 <Link className="cancelBtn" to="/community">취소</Link>
                                 <button className="addBtn" type="submit">수정하기</button>
