@@ -39,6 +39,10 @@ const BVCss = styled.div`
                 width: 40px;
             }
         }
+        .bottom {
+            margin: 10px 0;
+            padding-left: 10px;
+        }
     }
     .writeBtn {
         width: 25px;
@@ -178,9 +182,12 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
                         </li>
                     </ul>
                 )}
-                <li className="objectSelect">{object}</li>
-                <li className="titleTx">{title}</li>
-                <li className="contentTx">{content}</li>
+                <li className="bottom">
+                    <li className="objectSelect">{object}</li>
+                    <li className="titleTx">{title}</li>
+                    <li className="contentTx">{content}</li>
+                </li>
+
             </ul>
             <div className="commentBox">
                 <div className="btns">
