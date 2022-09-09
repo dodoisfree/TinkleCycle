@@ -28,6 +28,7 @@ position: relative;
     .fixIcon{
       position: fixed;
       width: 30px;
+      
       img{
         width: 35px;
         height: 35px;

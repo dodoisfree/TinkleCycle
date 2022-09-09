@@ -27,14 +27,17 @@ const BVCss = styled.div`
         width: 100%;
         margin: auto;
         height: 100%;
-        border: 2px solid #d5d5d5;
         li {
             margin-left: 15px;
             margin-top: 8px;
             align-items: center;
         }
-        .moreList {
-            width: 40px;
+        .top {
+            display: flex;
+            justify-content: space-between;
+            .moreList {
+                width: 40px;
+            }
         }
     }
     .writeBtn {
@@ -150,19 +153,18 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
         <BVCss key={id}>
             <Spinner visible={loading} />
             <ul>
-                <li className="userInfo">
-                    <img
-                        className="userImg"
-                        src={userImage}
-                        alt="userAccount"
-                    />
-                    {id}
+                <li className="top">
+                    <li className="userInfo">
+                        <img className="userImg" src={userImage} alt="userAccount" />
+                        {id}
+                    </li>
+                    <li className="moreList">
+                        <button className="Btn" type="button" onClick={onToggle}>
+                            <img className="iconImg" src={more} alt="moreImg" />
+                        </button>
+                    </li>
                 </li>
-                <li className="moreList">
-                    <button className="Btn" type="button" onClick={onToggle}>
-                        <img className="iconImg" src={more} alt="moreImg" />
-                    </button>
-                </li>
+               
                 {editDelBtn && (
                     <ul className="editDelBtnBox">
                         <li className="editDelBtnItem">
