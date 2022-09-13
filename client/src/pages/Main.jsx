@@ -136,8 +136,9 @@ const Main = memo(() => {
         //     }, 700);
         // }
     }, [inView, page, searchData]);
-    //console.log(sliceData);
 
+    console.log(sliceData);
+    console.log(searchData);
 
     const formik = useFormik({
         initialValues: {

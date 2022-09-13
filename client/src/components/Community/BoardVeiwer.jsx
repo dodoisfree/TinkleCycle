@@ -37,6 +37,21 @@ const BVCss = styled.div`
             justify-content: space-between;
             .moreList {
                 width: 40px;
+                .editDelBtnBox {
+                    width: 50px;
+                    height: 50px;
+                    background-color: aliceblue;
+                    display: flex;
+                    flex-direction: column;
+                    .editDelBtnItem {
+                        margin: 0 auto;
+                        height: 12px;
+                        padding: 6px;
+                        &:hover {
+                            background-color: #228AE6;
+                        }
+                    }
+                }
             }
         }
         .bottom {
@@ -64,16 +79,6 @@ const BVCss = styled.div`
             width: 25px;
             height: 25px;
             justify-items: right;
-        }
-    }
-    .editDelBtnBox {
-        width: 70px;
-        height: 50px;
-
-        .editDelBtnItem {
-            margin: 0 auto;
-            height: 12px;
-            padding: 6px;
         }
     }
     .commentBox {
@@ -166,22 +171,22 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
                         <button className="Btn" type="button" onClick={onToggle}>
                             <img className="iconImg" src={more} alt="moreImg" />
                         </button>
+                        {editDelBtn && (
+                            <div className="editDelBtnBox">
+                                <span className="editDelBtnItem">
+                                    {/* data-id로 일련번호 숨겨놓기 -어떤항목을 수정할지 */}
+                                    <div className="moreBtn" data-id={id} onClick={onEditClick}>수정</div>
+                                </span>
+                                <span className="editDelBtnItem">
+                                    {/* data-id로 일련번호 숨겨놓기 -어떤항목을 삭제할지 */}
+                                    {/* data-content 정말 이걸 삭제하는지 물어보기 위해 숨겨놓기 */}
+                                    <div className="moreBtn" data-id={id} data-content={content} onClick={onDeleteClick}>삭제</div>
+                                </span>
+                            </div>
+                        )}
                     </li>
                 </li>
                
-                {editDelBtn && (
-                    <ul className="editDelBtnBox">
-                        <li className="editDelBtnItem">
-                            {/* data-id로 일련번호 숨겨놓기 -어떤항목을 수정할지 */}
-                            <div className="moreBtn" data-id={id} onClick={onEditClick}>수정</div>
-                        </li>
-                        <li className="editDelBtnItem">
-                            {/* data-id로 일련번호 숨겨놓기 -어떤항목을 삭제할지 */}
-                            {/* data-content 정말 이걸 삭제하는지 물어보기 위해 숨겨놓기 */}
-                            <div className="moreBtn" data-id={id} data-content={content} onClick={onDeleteClick}>삭제</div>
-                        </li>
-                    </ul>
-                )}
                 <li className="bottom">
                     <li className="objectSelect">{object}</li>
                     <li className="titleTx">{title}</li>
