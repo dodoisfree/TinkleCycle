@@ -3,7 +3,7 @@ import MenuBar from "../components/MenuBar";
 import { useSelector, useDispatch } from "react-redux";
 import { getBicycles } from "../slices/RentalShopSlice";
 import Spinner from "../components/Spinner";
-import { useInView } from "react-intersection-observer";
+// import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
 import MainList from "../components/Main/MainList";
 // import MainSearchBar from "../components/Main/MainSearchBar";
@@ -91,11 +91,11 @@ const Main = memo(() => {
     }, [dispatch]);
 
     // 스크롤 시 타겟 관측 라이브러리
-    const [ref, inView] = useInView({
-        inView: false,
-        delay: 700,
-        root: null,
-    });
+    // const [ref, inView] = useInView({
+    //     inView: false,
+    //     delay: 700,
+    //     root: null,
+    // });
 
 
     // 검색어에 맞게 배열 가공
@@ -135,7 +135,7 @@ const Main = memo(() => {
         //         setLoading2(false);
         //     }, 700);
         // }
-    }, [inView, page, searchData]);
+    }, [page, searchData]);
 
     console.log(sliceData);
     console.log(searchData);
