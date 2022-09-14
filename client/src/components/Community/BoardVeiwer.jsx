@@ -23,7 +23,7 @@ const BVCss = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    ul {
+    .ul {
         width: 100%;
         margin: auto;
         height: 100%;
@@ -161,8 +161,8 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
     return (
         <BVCss key={id}>
             <Spinner visible={loading} />
-            <ul>
-                <li className="top">
+            <div className="ul">
+                <ul className="top">
                     <li className="userInfo">
                         <img className="userImg" src={userImage} alt="userAccount" />
                         {id}
@@ -185,15 +185,15 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
                             </div>
                         )}
                     </li>
-                </li>
+                </ul>
                
-                <li className="bottom">
+                <ul className="bottom">
                     <li className="objectSelect">{object}</li>
                     <li className="titleTx">{title}</li>
                     <li className="contentTx">{content}</li>
-                </li>
+                </ul>
 
-            </ul>
+            </div>
             <div className="commentBox">
                 <div className="btns">
                     <div onClick={toggleComment}>
