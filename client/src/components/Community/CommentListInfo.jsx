@@ -13,12 +13,21 @@ const CommentListInfoContainer = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        background-color: red;
-        .comment {
-            width: 25px;
-            height: 25px;
-            .id {
-                padding-left: 10px;
+        .commentInfo {
+            &:first-child {
+                padding-left: 5px;
+                height: 25px;
+                display: flex;
+                flex-direction: row;
+                & > span {
+                    font-size: 15px;
+                    padding-left: 10px;
+                    line-height: 25px;
+                }
+            }
+            &:nth-child(2) {
+                font-size: 15px;
+                line-height: 25px;
             }
         }
         .editDelBtnBox {
@@ -66,13 +75,12 @@ const CommentListInfo = memo( ({ id, comment, dispatch, deleteItem }) => {
       <CommentListInfoContainer>
         <ul className="commentListBox">
           {/* 데이터를 텍스트로 출력 */}
-          <li className="comment">
-            <img src="" alt="" />
+          <li className="commentInfo">
             <img className="userImg" src={account} alt="userImg" />
-            <span className="id">{id}</span>
+            <span>{id}</span>
           </li>
-          <li className="comment">{comment}</li>
-          <li className="Btn" onClick={onToggle}>
+          <li className="commentInfo">{comment}</li>
+          <li className="commentInfo" onClick={onToggle}>
               <img className="iconImg" src={more} alt="moreImg" />
           </li>
         </ul>
