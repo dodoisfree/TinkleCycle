@@ -5,16 +5,33 @@ import account from "../../assets/img/account-LB.png";
 import styled from "styled-components";
 
 const CommentListInfoContainer = styled.div`
-    .editDelBtnBox {
-        width: 50px;
-        height: 50px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+    .commentListBox {
+        height: auto;
         display: flex;
-        flex-direction: column;
-        .editDelBtnItem {
-            &:hover {
-                color: white;
-                font-weight: bold;
-                background-color: #228ae6;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: red;
+        .comment {
+            width: 25px;
+            height: 25px;
+            .id {
+                padding-left: 10px;
+            }
+        }
+        .editDelBtnBox {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            flex-direction: column;
+            .editDelBtnItem {
+                &:hover {
+                    color: white;
+                    font-weight: bold;
+                    background-color: #228ae6;
+                }
             }
         }
     }
@@ -49,18 +66,17 @@ const CommentListInfo = memo( ({ id, comment, dispatch, deleteItem }) => {
       <CommentListInfoContainer>
         <ul className="commentListBox">
           {/* 데이터를 텍스트로 출력 */}
-          <li className="comment_first">
+          <li className="comment">
             <img src="" alt="" />
             <img className="userImg" src={account} alt="userImg" />
-            {id}
+            <span className="id">{id}</span>
           </li>
-          <li className="comment_second">{comment}</li>
-          <li>
-            <div className="Btn" onClick={onToggle}>
+          <li className="comment">{comment}</li>
+          <li className="Btn" onClick={onToggle}>
               <img className="iconImg" src={more} alt="moreImg" />
-            </div>
           </li>
-          {editDelBtn && (
+        </ul>
+        {editDelBtn && (
             <ul className="editDelBtnBox">
               <li className="editDelBtnItem" data-id={id} onClick={onEditClick}>
                 {/* data-id로 일련번호 숨겨놓기 -어떤항목을 수정할지 */}
@@ -73,7 +89,6 @@ const CommentListInfo = memo( ({ id, comment, dispatch, deleteItem }) => {
               </li>
             </ul>
           )}
-        </ul>
       </CommentListInfoContainer>
     );
   }
