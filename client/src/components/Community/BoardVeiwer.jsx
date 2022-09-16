@@ -40,7 +40,7 @@ const BVCss = styled.div`
                 .editDelBtnBox {
                     width: 50px;
                     height: 50px;
-                    background-color: aliceblue;
+                    background-color: #eee;
                     display: flex;
                     flex-direction: column;
                     .editDelBtnItem {

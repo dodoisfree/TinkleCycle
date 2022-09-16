@@ -8,6 +8,7 @@ const CommentListInfoContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin: 10px auto;
+    position: relative;
     .commentListBox {
         height: auto;
         display: flex;
@@ -30,17 +31,23 @@ const CommentListInfoContainer = styled.div`
                 line-height: 25px;
             }
         }
-        .editDelBtnBox {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            flex-direction: column;
-            .editDelBtnItem {
-                &:hover {
-                    color: white;
-                    font-weight: bold;
-                    background-color: #228ae6;
-                }
+    }
+    .editDelBtnBox {
+        position: absolute;
+        right: 30px;
+        top: -12px;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        background-color: #eee;
+        .editDelBtnItem {
+            margin: 0 auto;
+            line-height: 25px;
+            &:hover {
+                color: white;
+                font-weight: bold;
+                background-color: #228ae6;
             }
         }
     }
