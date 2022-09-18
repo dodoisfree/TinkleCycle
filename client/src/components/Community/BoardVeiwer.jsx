@@ -55,6 +55,7 @@ const BVCss = styled.div`
             }
         }
         .bottom {
+            font-size: 13px;
             margin: 10px 0;
             padding-left: 10px;
         }
@@ -74,11 +75,15 @@ const BVCss = styled.div`
         width: 25px;
         height: 25px;
         display: flex;
-        justify-content: right;
+        justify-content: space-evenly;
         img {
             width: 25px;
             height: 25px;
             justify-items: right;
+        }
+        .userId {
+            margin-left: 5px;
+            font-size: 13px;
         }
     }
     .commentBox {
@@ -165,7 +170,7 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
                 <ul className="top">
                     <li className="userInfo">
                         <img className="userImg" src={userImage} alt="userAccount" />
-                        {id}
+                        <span className="userId">{id}</span>
                     </li>
                     <li className="moreList">
                         <button className="Btn" type="button" onClick={onToggle}>

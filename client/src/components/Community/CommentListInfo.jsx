@@ -21,13 +21,13 @@ const CommentListInfoContainer = styled.div`
                 display: flex;
                 flex-direction: row;
                 & > span {
-                    font-size: 15px;
+                    font-size: 13px;
                     padding-left: 10px;
                     line-height: 25px;
                 }
             }
             &:nth-child(2) {
-                font-size: 15px;
+                font-size: 13px;
                 line-height: 25px;
             }
         }
