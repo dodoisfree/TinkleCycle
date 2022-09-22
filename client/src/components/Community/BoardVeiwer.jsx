@@ -37,9 +37,13 @@ const BVCss = styled.div`
             justify-content: space-between;
             .moreList {
                 width: 40px;
+                position: relative;
                 .editDelBtnBox {
                     width: 50px;
                     height: 50px;
+                    position: absolute;
+                    top: 35px;
+                    right: 5px;
                     background-color: #eee;
                     display: flex;
                     flex-direction: column;

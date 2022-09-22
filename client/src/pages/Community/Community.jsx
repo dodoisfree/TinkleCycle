@@ -25,15 +25,17 @@ const CommunityContainer = styled.div`
         border-radius: 15px;
         display: flex;
         align-items: center;
-        > label {
+        >label {
             width: 20%;
             height: 100%;
             border-right: 1px solid white;
-            h4 {
+            .addBoard {
+                display: block;
                 line-height: 40px;
                 text-align: center;
                 font-size: 16px;
                 font-weight: bold;
+                color: white;
             }
         }
         .addrIpt {
@@ -58,7 +60,7 @@ const CommunityContainer = styled.div`
             height: 100%;
             background: url(${Search1}) no-repeat;
             background-size: 30px, 30px;
-            background-position: center, center;
+            background-position: center, center; 
             text-indent: -99999px;
             &:hover {
                 background-color: #228ae6;
@@ -97,14 +99,12 @@ const Community = memo(() => {
             <div className="containerSize media">
                 <form className="searchAddress" onSubmit={formik.handleSubmit}>
                     <label htmlFor="addrIpt">
-                        <h4>새 글 작성</h4>
+                        <Link to="/addBoard" className="addBoard">새 글 쓰기</Link>
                     </label>
                     <input id="addrIpt" className="addrIpt" type="address" name="keyword" placeholder="게시글 검색." value={formik.values.keyword} {...formik.getFieldProps("keyword")} />
                     <button type="submit" className="searchBtn"> 검색 버튼 </button>
                 </form>
-                <Link to="/addBoard" className="addrIpt">
-                    <img className="iconImg" src={writeImg} alt="writImg" />
-                </Link>
+                
                 <BoardList />
             </div>
         </CommunityContainer>
