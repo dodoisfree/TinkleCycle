@@ -17,7 +17,8 @@ import writeImg from "../../assets/img/edit.png";
 
 const CommunityContainer = styled.div`
     .searchAddress {
-        margin: 40px 0;
+        margin-top: 40px;
+        margin-bottom: 20px;
         width: 100%;
         height: 40px;
         background-color: #98d6f6;
@@ -29,7 +30,7 @@ const CommunityContainer = styled.div`
             width: 20%;
             height: 100%;
             border-right: 1px solid white;
-            .addBoard {
+            >strong {
                 display: block;
                 line-height: 40px;
                 text-align: center;
@@ -69,6 +70,28 @@ const CommunityContainer = styled.div`
             }
         }
     }
+    .addBoardBtn {
+        display: block;
+        border: 1px solid #98d6f6;
+        background-color: #98d6f6;
+        color: white;
+        box-sizing: border-box;
+        border-radius: 5px;
+        width: auto;
+        height: 40px;
+        line-height: 40px;
+        padding: 0px 10px;
+        margin-bottom: 10px;
+        margin-right: 15px;
+        font-size: 18px;
+        text-align: center;
+        float: right;
+        &::after {
+            content: '';
+            clear: both;
+            display: block;
+        }
+    }
 `;
 
 const Community = memo(() => {
@@ -98,13 +121,11 @@ const Community = memo(() => {
             <MenuBar />
             <div className="containerSize media">
                 <form className="searchAddress" onSubmit={formik.handleSubmit}>
-                    <label htmlFor="addrIpt">
-                        <Link to="/addBoard" className="addBoard">새 글 쓰기</Link>
-                    </label>
-                    <input id="addrIpt" className="addrIpt" type="address" name="keyword" placeholder="게시글 검색." value={formik.values.keyword} {...formik.getFieldProps("keyword")} />
+                    <label htmlFor="addrIpt"><strong>게시글</strong></label>
+                    <input id="addrIpt" className="addrIpt" type="address" name="keyword" placeholder="게시글 키워드 입력." value={formik.values.keyword} {...formik.getFieldProps("keyword")} />
                     <button type="submit" className="searchBtn"> 검색 버튼 </button>
                 </form>
-                
+                <Link to="/addBoard" className="addBoardBtn">게시글 작성하기</Link>
                 <BoardList />
             </div>
         </CommunityContainer>

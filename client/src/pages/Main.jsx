@@ -167,7 +167,7 @@ const Main = memo(() => {
                     <label htmlFor="addrIpt">
                         <h4>내주소</h4>
                     </label>
-                    <input id="addrIpt" className="addrIpt" type="address" name='keyword' placeholder="키워드 입력." 
+                    <input id="addrIpt" className="addrIpt" type="address" name='keyword' placeholder="주소 키워드 입력." 
                         value={formik.values.keyword} {...formik.getFieldProps("keyword")} /> 
                     <button type='submit' className="searchBtn"> 검색 버튼 </button>
                 </form>
