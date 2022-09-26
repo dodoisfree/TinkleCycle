@@ -72,7 +72,7 @@ const CommunityContainer = styled.div`
     }
     .addBoardBtn {
         display: block;
-        border: 1px solid #98d6f6;
+
         background-color: #98d6f6;
         color: white;
         box-sizing: border-box;
@@ -90,6 +90,9 @@ const CommunityContainer = styled.div`
             content: '';
             clear: both;
             display: block;
+        }
+        &:hover {
+            background-color: #228ae6;
         }
     }
 `;
