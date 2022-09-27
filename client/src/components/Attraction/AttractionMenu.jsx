@@ -10,7 +10,7 @@ import styled from "styled-components";
 const NavContainer = styled.div`
     .menuBox {
         width: 100%;
-        height: 200px;
+        height: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
