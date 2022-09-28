@@ -95,6 +95,19 @@ const CommunityContainer = styled.div`
             background-color: #228ae6;
         }
     }
+    .viewMore {
+        width: 100%;
+        height: 100%;
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 30px;
+        border: 1px solid #eee;
+        background-color: #eee;
+        border-radius: 10px;
+        &:hover {
+            background-color: #228ae6;
+        }
+    }
 `;
 
 const Community = memo(() => {
@@ -130,6 +143,7 @@ const Community = memo(() => {
                 </form>
                 <Link to="/addBoard" className="addBoardBtn">게시글 작성하기</Link>
                 <BoardList />
+                <button className="viewMore" type="button"><b>•••</b><br/>더 보기</button>
             </div>
         </CommunityContainer>
     );
