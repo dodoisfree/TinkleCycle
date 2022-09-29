@@ -17,44 +17,46 @@
  import CancleYN from "../../components/Modal/CancelYN";
  
  const AddBoardContainer = styled.div`
-     padding-top: 30px;
-     .selectBox {
-         width: 100%;
-         border: 1px solid #d5d5d5;
-         height: 30px;
-         font-size: ${(props) => props.theme.size.S};
-         color: #535353;
-     }
-     .titleArea {
-         width: 100%;
-         border: 1px solid #d5d5d5;
-         height: 30px;
-         font-size: ${(props) => props.theme.size.S};
-         color: #535353;
-         margin-top: 10px;
-         padding: 0 5px;
-         box-sizing: border-box;
-     }
-     .textArea {
-         width: 100%;
-         border: 1px solid #d5d5d5;
-         font-size: ${(props) => props.theme.size.S};
-         color: #535353;
-         margin-top: 10px;
-         padding: 5px;
-         box-sizing: border-box;
-         height: 500px;
-     }
-     .alert {
-        display: block;
-        width: auto;
-        height: 20px;
-         font-size: 12px;
-         line-height: 20px;
-         color: red;
-         margin: 9px 0px 2px;
-         padding-left: 10px;
-     }
+    form {
+        padding-top: 30px;
+        .selectBox {
+            width: 100%;
+            border: 1px solid #d5d5d5;
+            height: 30px;
+            font-size: ${(props) => props.theme.size.S};
+            color: #535353;
+        }
+        .titleArea {
+            width: 100%;
+            border: 1px solid #d5d5d5;
+            height: 30px;
+            font-size: ${(props) => props.theme.size.S};
+            color: #535353;
+            margin-top: 10px;
+            padding: 0 5px;
+            box-sizing: border-box;
+        }
+        .textArea {
+            width: 100%;
+            border: 1px solid #d5d5d5;
+            font-size: ${(props) => props.theme.size.S};
+            color: #535353;
+            margin-top: 10px;
+            padding: 5px;
+            box-sizing: border-box;
+            height: 500px;
+        }
+        .alert {
+            display: block;
+            width: auto;
+            height: 20px;
+            font-size: 12px;
+            line-height: 20px;
+            color: red;
+            margin: 9px 0px 2px;
+            padding-left: 10px;
+        }
+    }
  `;
  const ButtonBox = styled.div`
      display: flex;
@@ -62,16 +64,23 @@
      align-items: center;
      margin: 10px 0;
      .cancelBtn {
-         border: 1px solid #f6f3f2;
-         background-color: #f6f3f2;
+         border: 1px solid #d5d5d5;
+         background-color: #d5d5d5;
          padding: 7px 20px;
          margin-right: 10px;
+         color: black;
+         font-size: 13.3333px;
+         &:hover {
+             background-color: #98d6f6;
+             border: 1px solid #98d6f6;
+         }
      }
      .addBtn {
          border: 1px solid #d5d5d5;
          background-color: #d5d5d5;
          color: white;
          padding: 4px 10px;
+         color: black;
          &:hover {
              background-color: #98d6f6;
              border: 1px solid #98d6f6;
@@ -134,13 +143,13 @@
                         <option value="boast">자랑해요</option>
                         <option value="etc">기타</option>
                      </select>
-                     {formik.touched.object ? (<span className="alert">{formik.errors.object}</span>) : null}
+                     {formik.touched.object ? (formik.errors.object && (<span className="alert">{formik.errors.object}</span>)) : null}
  
                      <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." value={formik.values.title} {...formik.getFieldProps("title")} />
-                     {formik.touched.title ? (<span className="alert">{formik.errors.title}</span>) : null}
+                     {formik.touched.title ? (formik.errors.title && (<span className="alert">{formik.errors.title}</span>)) : null}
 
                      <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." value={formik.values.content} {...formik.getFieldProps("content")} />
-                     {formik.touched.content ? (<span className="alert">{formik.errors.content}</span>) : null}
+                     {formik.touched.content ? (formik.errors.content && (<span className="alert">{formik.errors.content}</span>)) : null}
  
                      <ButtonBox>
                          {modal && (

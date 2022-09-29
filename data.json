@@ -1121,6 +1121,12 @@
       "title": "ㄴㅁㅇㅁㄴㅇ",
       "content": "ㅁㄴㅇㅁㄴㅇㄴㅁ",
       "id": 10
+    },
+    {
+      "object": "together",
+      "title": "게시글 작성 1",
+      "content": "1111",
+      "id": 11
     }
   ],
   "comment": [
