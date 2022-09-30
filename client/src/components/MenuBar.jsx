@@ -29,29 +29,25 @@ const MenuBarContainer = styled.div`
                 color: white;
             }
         }
-        .one {
-            &:hover {
-                background-color: #98d6f6;
-                color: white;
-            }
-        }
+
     }
 `;
 
 const MenuBar = memo(() => {
-    const [menu, setMenu] = useState();
-    const menuClick = React.useCallback(() => {
-        setMenu("one");
+    const menuClick = React.useCallback((e) => {
+        const link = e.target;
+        link.style.backgroundColor = '#98d6f6';
+        link.style.color = 'white';
+        console.log(link);
     }, []);
-    console.log(menu);
 
     return (
         <MenuBarContainer className="containerSize media">
             <nav>
-                <NavLink className={`link ${menu}`} to="/" onClick={menuClick}>대여소찾기</NavLink>
-                <NavLink className={`link ${menu}`} to="/attraction/gangnam" onClick={menuClick}>추천명소</NavLink>
-                <NavLink className={`link ${menu}`} to="/community" onClick={menuClick}>커뮤니티</NavLink>
-                <NavLink className={`link ${menu}`} to="/mypage" onClick={menuClick}>마이페이지</NavLink>
+                <NavLink className='link' to="/" onClick={menuClick}>대여소찾기</NavLink>
+                <NavLink className='link' to="/attraction/gangnam" onClick={menuClick}>추천명소</NavLink>
+                <NavLink className='link' to="/community" onClick={menuClick}>커뮤니티</NavLink>
+                <NavLink className='link' to="/mypage" onClick={menuClick}>마이페이지</NavLink>
             </nav>
         </MenuBarContainer>
     );
