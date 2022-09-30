@@ -47,27 +47,31 @@ const AttractionMenu = () => {
                     <Gumenu to={"/attraction/gangbuk"}>강북구</Gumenu>
                     <Gumenu to={"/attraction/gangseo"}>강서구</Gumenu>
                     <Gumenu to={"/attraction/gwanak"}>관악구</Gumenu>
-                    <Gumenu to={"/attraction/gwangjin"}>광진구</Gumenu>
                 </div>
+
                 <div>
+                    <Gumenu to={"/attraction/gwangjin"}>광진구</Gumenu>
                     <Gumenu to={"/attraction/guro"}>구로구</Gumenu>
                     <Gumenu to={"/attraction/geumcheon"}>금천구</Gumenu>
                     <Gumenu to={"/attraction/nowon"}>노원구</Gumenu>
                     <Gumenu to={"/attraction/dobong"}>도봉구</Gumenu>
+                </div>
+
+                <div>
                     <Gumenu to={"/attraction/dongdaemun"}>동대문구</Gumenu>
                     <Gumenu to={"/attraction/dongjak"}>동작구</Gumenu>
-                </div>
-                <div>
                     <Gumenu to={"/attraction/mapo"}>마포구</Gumenu>
                     <Gumenu to={"/attraction/seodaemun"}>서대문구</Gumenu>
                     <Gumenu to={"/attraction/seocho"}>서초구</Gumenu>
+                </div>
+                <div>
                     <Gumenu to={"/attraction/seongdong"}>성동구</Gumenu>
                     <Gumenu to={"/attraction/seongbuk"}>성북구</Gumenu>
                     <Gumenu to={"/attraction/songpa"}>송파구</Gumenu>
-                </div>
-                <div>
                     <Gumenu to={"/attraction/yangcheon"}>양천구</Gumenu>
                     <Gumenu to={"/attraction/yeongdeungpo"}>영등포구</Gumenu>
+                </div>
+                <div>
                     <Gumenu to={"/attraction/yongsan"}>용산구</Gumenu>
                     <Gumenu to={"/attraction/eunpyeong"}>은평구</Gumenu>
                     <Gumenu to={"/attraction/jongro"}>종로구</Gumenu>

@@ -140,13 +140,13 @@ const AddCommunity = memo(() => {
                                 <option value="boast">자랑해요</option>
                                 <option value="etc">기타</option>
                             </select>
-                            {formik.touched.object ? (<span className="alert">{formik.errors.object}</span>) : null}
+                            {formik.touched.object ? (formik.errors.object && (<span className="alert">{formik.errors.object}</span>)) : null}
 
                             <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." defaultValue={formik.values.title} {...formik.getFieldProps("title")} />
-                            {formik.touched.title ? (<span className="alert">{formik.errors.title}</span>) : null}
+                            {formik.touched.title ? (formik.errors.title && (<span className="alert">{formik.errors.title}</span>)) : null}
 
                             <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." defaultValue={formik.values.content} {...formik.getFieldProps("content")} />
-                            {formik.touched.content ? (<span className="alert">{formik.errors.content}</span>) : null}
+                            {formik.touched.content ? (formik.errors.content && (<span className="alert">{formik.errors.content}</span>)) : null}
                             <ButtonBox> 
                                 <Link className="cancelBtn" to="/community">취소</Link>
                                 <button className="addBtn" type="submit">수정하기</button>
