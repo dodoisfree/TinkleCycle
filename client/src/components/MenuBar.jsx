@@ -32,7 +32,7 @@ const MenuBarContainer = styled.div`
 
     }
 `;
-
+// 수정 예정
 const MenuBar = memo(() => {
     const menuClick = React.useCallback((e) => {
         const link = e.target;
