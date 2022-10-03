@@ -13,7 +13,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import Search1 from "../../assets/img/search-w.png";
-import writeImg from "../../assets/img/edit.png";
+// import writeImg from "../../assets/img/edit.png";
 
 const CommunityContainer = styled.div`
     .searchAddress {
@@ -26,38 +26,27 @@ const CommunityContainer = styled.div`
         border-radius: 15px;
         display: flex;
         align-items: center;
-        >label {
-            width: 20%;
-            height: 100%;
-            border-right: 1px solid white;
-            >strong {
-                display: block;
-                line-height: 40px;
-                text-align: center;
-                font-size: 16px;
-                font-weight: bold;
-                color: white;
-            }
-        }
         .addrIpt {
-            border: none;
-            background-color: #98d6f6;
-            color: white;
-            width: 70%;
+            width: 100%;
             height: 100%;
-            padding: 0;
+            border: none;
+            border-right: 1px solid white;
+            background-color: #98d6f6;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            color: white;
             padding-left: 30px;
             box-sizing: border-box;
             outline: none;
             font-size: 18px;
-            border-right: 1px solid white;
+            font-weight: bold;
             &::placeholder {
                 color: white;
             }
         }
         .searchBtn {
             border: none;
-            width: 15%;
+            width: 20%;
             height: 100%;
             background: url(${Search1}) no-repeat;
             background-size: 30px, 30px;
@@ -137,7 +126,6 @@ const Community = memo(() => {
             <MenuBar />
             <div className="containerSize media">
                 <form className="searchAddress" onSubmit={formik.handleSubmit}>
-                    <label htmlFor="addrIpt"><strong>게시글</strong></label>
                     <input id="addrIpt" className="addrIpt" type="address" name="keyword" placeholder="게시글 키워드 입력." value={formik.values.keyword} {...formik.getFieldProps("keyword")} />
                     <button type="submit" className="searchBtn"> 검색 버튼 </button>
                 </form>
