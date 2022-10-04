@@ -25,16 +25,19 @@ const MainCss = styled.div`
         border-radius: 15px;
         display: flex;
         align-items: center;
-        > label {
+        .defaultAddr {
             width: 20%;
             height: 100%;
+            border: none;
             border-right: 1px solid white;
-            h4 {
-                line-height: 40px;
-                text-align: center;
-                font-size: 16px;
-                font-weight: bold;
-            }
+            background-color: #98d6f6;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 16px;
+            color: white;
+            font-weight: bold;
         }
         .addrIpt {
             border: none;
@@ -112,6 +115,10 @@ const Main = memo(() => {
             setSearchData(data && data.filter((it) => it.stationName.includes(String(keyword))));
         }
     }, [data, keyword]);
+
+    const defaultAddr = React.useCallback(() => {
+        setKeyword('서초');
+    }, []);
     
     /** 더보기 버튼 추가 후 클릭 시 데이터 추가로 변경 예정 */
     // 데이터 나눠서 출력, 무한 스크롤 구현중 (현재 로딩전 출력)
@@ -142,7 +149,7 @@ const Main = memo(() => {
 
     const formik = useFormik({
         initialValues: {
-            keyword: "",
+            keyword: '',
         },
         validationSchema: Yup.object({
             keyword: Yup.string()
@@ -164,9 +171,7 @@ const Main = memo(() => {
             <Spinner visible={loading2} />
             <div className="containerSize inside">
                 <form className="searchAddress" onSubmit={formik.handleSubmit}>
-                    <label htmlFor="addrIpt">
-                        <h4>내주소</h4>
-                    </label>
+                    <button className="defaultAddr" onClick={defaultAddr}>내 주소</button>
                     <input id="addrIpt" className="addrIpt" type="address" name='keyword' placeholder="주소 키워드 입력." 
                         value={formik.values.keyword} {...formik.getFieldProps("keyword")} /> 
                     <button type='submit' className="searchBtn"> 검색 버튼 </button>

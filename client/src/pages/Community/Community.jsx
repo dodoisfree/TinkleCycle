@@ -17,15 +17,16 @@ import Search1 from "../../assets/img/search-w.png";
 
 const CommunityContainer = styled.div`
     .searchAddress {
-        margin-top: 40px;
-        margin-bottom: 20px;
-        width: 100%;
-        height: 40px;
-        background-color: #98d6f6;
-        color: white;
-        border-radius: 15px;
         display: flex;
-        align-items: center;
+        background-color: #98d6f6;
+        border-radius: 15px;
+        width: 95%;
+        height: 40px;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        color: white; 
         .addrIpt {
             width: 100%;
             height: 100%;
@@ -61,7 +62,6 @@ const CommunityContainer = styled.div`
     }
     .addBoardBtn {
         display: block;
-
         background-color: #98d6f6;
         color: white;
         box-sizing: border-box;
@@ -70,7 +70,7 @@ const CommunityContainer = styled.div`
         height: 40px;
         line-height: 40px;
         padding: 0px 10px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         margin-right: 15px;
         font-size: 18px;
         text-align: center;
