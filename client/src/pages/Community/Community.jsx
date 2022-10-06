@@ -126,7 +126,7 @@ const Community = memo(() => {
             <MenuBar />
             <div className="containerSize media">
                 <form className="searchAddress" onSubmit={formik.handleSubmit}>
-                    <input id="addrIpt" className="addrIpt" type="address" name="keyword" placeholder="게시글 키워드 입력." value={formik.values.keyword} {...formik.getFieldProps("keyword")} />
+                    <input id="addrIpt" className="addrIpt" type="address" name="keyword" placeholder="키워드로 게시글 검색" value={formik.values.keyword} {...formik.getFieldProps("keyword")} />
                     <button type="submit" className="searchBtn"> 검색 버튼 </button>
                 </form>
                 <Link to="/addBoard" className="addBoardBtn">게시글 작성하기</Link>

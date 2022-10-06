@@ -14,25 +14,30 @@ import AddBtn from '../../../assets/img/next.png'
 
 import regexHelper from '../../../libs/RegexHelper';
 
-const CommentContainer =styled.div`
-  height: 100%;
-  .commentBox{
-    display: flex;
-    justify-content: center;
-    .commentInput{
-    width: 80%;
-    border: 2px solid #f6f3f2;
+const CommentContainer = styled.div`
+    height: 100%;
+    .commentBox {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        .commentInput {
+            width: 80%;
+            border: 2px solid #f6f3f2;
+            padding-left: 10px;
+            outline: none;
+        }
+        .addBtn {
+            width: 30px;
+            height: 30px;
+            background: url(${AddBtn}) no-repeat;
+            background-size: cover;
+            background-position: center, center;
+            border: none;
+            margin-left: 5px;
+        }
     }
-    .addBtn{
-      background-color: white;
-      border: none;
-      margin-left: 3px;
-      img {
-        width: 25px;
-        height: 25px;
-      }
-    }
-  }
 `;
 
 const AddComment = memo(() =>{
@@ -79,7 +84,7 @@ const AddComment = memo(() =>{
        ) :(
       <form className='commentBox' onSubmit={onSubmit}>
           <input className='commentInput' type="text" placeholder="댓글을 작성해주세요" name="comment" />
-          <button type="submit" className='addBtn'><img src={AddBtn} alt="addBtn" /></button>
+          <button type="submit" className='addBtn'></button>
         </form>
          )
         }
