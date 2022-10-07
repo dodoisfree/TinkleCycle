@@ -14,22 +14,11 @@ import ErrorView from '../ErrorView';
 import BoardVeiwer from "./BoardVeiwer";
 
 const BoardListContainer = styled.div`
-  .addBoardIcon{
-    width: 100%;
-    display: block;
-    float: right;
-    .fixIcon{
-      position: fixed;
-      width: 30px;
-      display: flex;
-      justify-items: flex-end;
-      align-items: flex-end;
-    }
-  }
   .boardListBox{
     height: 100%;
     width: 100%;
     font-size: 12px;
+    background-color: black;
   }
 `;
 
