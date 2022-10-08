@@ -88,7 +88,7 @@ const MainCss = styled.div`
 const Main = memo(() => {
     const { data, error } = useSelector((state) => state.rentalShop);
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
         dispatch(getBicycles());
     }, [dispatch]);

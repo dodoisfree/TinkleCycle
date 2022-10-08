@@ -4,7 +4,7 @@
  * @author: 천경재
  */
 
- import React, { memo } from "react";
+ import React, { memo, useEffect, useState } from "react";
  import MenuBar from "../../components/MenuBar";
  import { useSelector, useDispatch } from "react-redux";
  import { getList, deleteItem } from "../../slices/CommunitySlice";
@@ -113,6 +113,18 @@
  
      const [loading2, setLoading2] = React.useState(false);
      const [keyword, setKeyword] = React.useState();
+
+     const [searchData, setSearchData] = useState();
+    
+    console.log(data);
+     useEffect(() => {
+         if (keyword === null || keyword === undefined) {
+             // 전체 검색
+             setSearchData(data && data.filter((it) => it.title.includes('')));
+         } else {
+             setSearchData(data && data.filter((it) => it.title.includes(String(keyword))));
+         }
+     }, [data, keyword]);
  
      React.useEffect(() => {
          dispatch(getList());
@@ -141,7 +153,7 @@
              <MenuBar />
              <div className="containerSize media">
                  <form className="searchAddress" onSubmit={formik.handleSubmit}>
-                     <input id="addrIpt" className="addrIpt" type="address" name="keyword" placeholder="키워드로 게시글 검색" value={formik.values.keyword} {...formik.getFieldProps("keyword")} />
+                     <input id="addrIpt" className="addrIpt" type="address" name="keyword" placeholder="제목으로 게시글 검색" value={formik.values.keyword} {...formik.getFieldProps("keyword")} />
                      <button type="submit" className="searchBtn">검색 버튼</button>
                  </form>
                  <Link to="/addBoard" className="addBoardBtn">게시글 작성하기</Link>
@@ -149,8 +161,8 @@
                      <Spinner visible={loading} />
                      {error ? (
                          <p>에러!</p>
-                     ) : data && data.length > 0 && (
-                         data.map(({ id, title, object, content }, idx) => {
+                     ) : searchData && searchData.length > 0 && (
+                         searchData.map(({ id, title, object, content }, idx) => {
                              return (
                                  <BoardVeiwer key={idx} className="boardVeiwer" id={id} title={title} object={object} content={content} deleteItem={deleteItem} dispatch={dispatch} />
                              );
