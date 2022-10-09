@@ -23,26 +23,36 @@ const BVCss = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    .ul {
+    .postBox {
         width: 100%;
-        margin: auto;
         height: 100%;
-        li {
-            margin-left: 15px;
-            margin-top: 8px;
-            align-items: center;
-        }
-        .top {
+        padding-top: 8px;
+        .userInfo {
+            width: 100%;
+            height: 100%;
             display: flex;
             justify-content: space-between;
-            .moreList {
+            line-height: 32px;
+            margin: auto;
+            align-items: center;
+            .userImg {
                 width: 10%;
+                height: 100%;
+                background: url(${userImage}) no-repeat;
+                background-size: 25px 25px;
+                background-position: center, center;
+                text-indent: -99999px;
+            }
+            .moreListBtn {
                 position: relative;
+                width: 10%;
+                height: 100%;
                 background: url(${more}) no-repeat;
                 background-size: 25px 25px;
                 background-position: center, center;
                 text-indent: -99999px;
                 cursor: pointer;
+                border: none;
                 .editDelBtnBox {
                     text-indent: 0;
                     width: 50px;
@@ -54,20 +64,23 @@ const BVCss = styled.div`
                     display: flex;
                     flex-direction: column;
                     .editDelBtnItem {
-                        margin: 0 auto;
-                        height: 12px;
-                        padding: 6px;
+                        width: 100%;
+                        height: auto;
+                        line-height: 25px;
+                        text-align: center;
                         &:hover {
-                            background-color: #228AE6;
+                            background-color: #228ae6;
                         }
                     }
                 }
             }
         }
-        .bottom {
-            font-size: 13px;
-            margin: 10px 0;
-            padding-left: 10px;
+        .content {
+            width: 100%;
+            height: 100%;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            padding-left: 20px;
         }
     }
     .writeBtn {
@@ -176,13 +189,13 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
     return (
         <BVCss key={id}>
             <Spinner visible={loading} />
-            <div className="ul">
-                <ul className="top">
-                    <li className="userInfo">
-                        <img className="userImg" src={userImage} alt="userAccount" />
-                        <span className="userId">{id}</span>
-                    </li>
-                    <li className="moreList"onClick={onToggle}>더 보기
+            <section className="postBox">
+                <div className="userInfo">
+                <span className="userImg" src={userImage} alt="userAccount">유저 이미지</span>
+                    <span className="userId">{id}</span>
+                    <span className="titleTx">{title}</span>
+                    <span className="objectSelect">{object}</span>
+                    <span className="moreListBtn"onClick={onToggle}>더 보기
                         {editDelBtn && (
                             <div className="editDelBtnBox">
                                 <span className="editDelBtnItem">
@@ -196,17 +209,13 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
                                 </span>
                             </div>
                         )}
-                    </li>
-                </ul>
-               
-                <ul className="bottom">
-                    <li className="objectSelect">{object}</li>
-                    <li className="titleTx">{title}</li>
-                    <li className="contentTx">{content}</li>
-                </ul>
-
-            </div>
-            <div className="commentBox">
+                    </span>
+                </div>
+                <div className="content">
+                    <span className="contentTx">{content}</span>
+                </div>
+            </section>
+            <section className="commentBox">
                 <div className="btns">
                     <div onClick={toggleComment}>
                         <img className="iconImg" src={comment} alt="commentOpen" />
@@ -233,7 +242,7 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
                         <AddComment />
                     </div>
                 </div>
-            </div>
+            </section>
         </BVCss>
     );
 });
