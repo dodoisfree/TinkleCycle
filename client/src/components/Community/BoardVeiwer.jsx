@@ -36,9 +36,15 @@ const BVCss = styled.div`
             display: flex;
             justify-content: space-between;
             .moreList {
-                width: 40px;
+                width: 10%;
                 position: relative;
+                background: url(${more}) no-repeat;
+                background-size: 25px 25px;
+                background-position: center, center;
+                text-indent: -99999px;
+                cursor: pointer;
                 .editDelBtnBox {
+                    text-indent: 0;
                     width: 50px;
                     height: 50px;
                     position: absolute;
@@ -176,10 +182,7 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
                         <img className="userImg" src={userImage} alt="userAccount" />
                         <span className="userId">{id}</span>
                     </li>
-                    <li className="moreList">
-                        <button className="Btn" type="button" onClick={onToggle}>
-                            <img className="iconImg" src={more} alt="moreImg" />
-                        </button>
+                    <li className="moreList"onClick={onToggle}>더 보기
                         {editDelBtn && (
                             <div className="editDelBtnBox">
                                 <span className="editDelBtnItem">
