@@ -27,7 +27,7 @@ const BVCss = styled.div`
         width: 100%;
         height: 100%;
         padding-top: 8px;
-        .userInfo {
+        .postInfo {
             width: 100%;
             height: 100%;
             display: flex;
@@ -35,41 +35,55 @@ const BVCss = styled.div`
             line-height: 32px;
             margin: auto;
             align-items: center;
-            .userImg {
+            .userInfo {
                 width: 10%;
                 height: 100%;
-                background: url(${userImage}) no-repeat;
-                background-size: 25px 25px;
-                background-position: center, center;
-                text-indent: -99999px;
+                display: flex;
+                justify-content: space-evenly;
+                padding-left: 10px;
+                .userImg {
+                    width: 100%;
+                    height: 100%;
+                    background: url(${userImage}) no-repeat;
+                    background-size: 25px 25px;
+                    background-position: center, center;
+                    text-indent: -99999px;
+                }
+                .userId {
+                    width: 100%;
+                    height: 100%;
+                }
             }
-            .moreListBtn {
-                position: relative;
-                width: 10%;
-                height: 100%;
-                background: url(${more}) no-repeat;
-                background-size: 25px 25px;
-                background-position: center, center;
-                text-indent: -99999px;
-                cursor: pointer;
-                border: none;
-                .editDelBtnBox {
-                    text-indent: 0;
-                    width: 50px;
-                    height: 50px;
-                    position: absolute;
-                    top: 35px;
-                    right: 5px;
-                    background-color: #eee;
-                    display: flex;
-                    flex-direction: column;
-                    .editDelBtnItem {
-                        width: 100%;
-                        height: auto;
-                        line-height: 25px;
-                        text-align: center;
-                        &:hover {
-                            background-color: #228ae6;
+            .etc {
+                
+                .moreListBtn {
+                    position: relative;
+                    width: 10%;
+                    height: 100%;
+                    background: url(${more}) no-repeat;
+                    background-size: 25px 25px;
+                    background-position: center, center;
+                    text-indent: -99999px;
+                    cursor: pointer;
+                    border: none;
+                    .editDelBtnBox {
+                        text-indent: 0;
+                        width: 50px;
+                        height: 50px;
+                        position: absolute;
+                        top: 35px;
+                        right: 5px;
+                        background-color: #eee;
+                        display: flex;
+                        flex-direction: column;
+                        .editDelBtnItem {
+                            width: 100%;
+                            height: auto;
+                            line-height: 25px;
+                            text-align: center;
+                            &:hover {
+                                background-color: #228ae6;
+                            }
                         }
                     }
                 }
@@ -190,26 +204,31 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
         <BVCss key={id}>
             <Spinner visible={loading} />
             <section className="postBox">
-                <div className="userInfo">
-                <span className="userImg" src={userImage} alt="userAccount">유저 이미지</span>
-                    <span className="userId">{id}</span>
-                    <span className="titleTx">{title}</span>
-                    <span className="objectSelect">{object}</span>
-                    <span className="moreListBtn"onClick={onToggle}>더 보기
-                        {editDelBtn && (
-                            <div className="editDelBtnBox">
-                                <span className="editDelBtnItem">
-                                    {/* data-id로 일련번호 숨겨놓기 -어떤항목을 수정할지 */}
-                                    <div className="moreBtn" data-id={id} onClick={onEditClick}>수정</div>
-                                </span>
-                                <span className="editDelBtnItem">
-                                    {/* data-id로 일련번호 숨겨놓기 -어떤항목을 삭제할지 */}
-                                    {/* data-content 정말 이걸 삭제하는지 물어보기 위해 숨겨놓기 */}
-                                    <div className="moreBtn" data-id={id} data-content={content} onClick={onDeleteClick}>삭제</div>
-                                </span>
-                            </div>
-                        )}
-                    </span>
+                <div className="postInfo">
+                    <div className="userInfo">
+                        <span className="userImg">유저 이미지</span>
+                        <span className="userId">{id}</span>
+                    </div>
+                    <span className="title">제목 : {title}</span>
+                    <div className="etc">
+                        <span className="objectSelect">분류 : {object}</span>
+                        <span className="moreListBtn" onClick={onToggle}>
+                            더 보기
+                            {editDelBtn && (
+                                <div className="editDelBtnBox">
+                                    <span className="editDelBtnItem">
+                                        {/* data-id로 일련번호 숨겨놓기 -어떤항목을 수정할지 */}
+                                        <div className="moreBtn" data-id={id} onClick={onEditClick}>수정</div>
+                                    </span>
+                                    <span className="editDelBtnItem">
+                                        {/* data-id로 일련번호 숨겨놓기 -어떤항목을 삭제할지 */}
+                                        {/* data-content 정말 이걸 삭제하는지 물어보기 위해 숨겨놓기 */}
+                                        <div className="moreBtn" data-id={id} data-content={content} onClick={onDeleteClick}>삭제</div>
+                                    </span>
+                                </div>
+                            )}
+                        </span>
+                    </div>
                 </div>
                 <div className="content">
                     <span className="contentTx">{content}</span>
@@ -227,16 +246,12 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
                 <div className="commentOpen" style={{ display: isOpen ? "block" : "none" }}>
                     {error ? (
                         <ErrorView error={error} />
-                    ) : data && data.length > 0 ? (
+                    ) : data && data.length > 0 && (
                         data.map(({ id, comment }, i) => {
                             return (
                                 <CommentListInfo key={i} id={id} comment={comment} dispatch={dispatch} deleteItem={deleteItem} />
                             );
                         })
-                    ) : (
-                        <ul>
-                            <li>아직 댓글이 없습니다.</li>
-                        </ul>
                     )}
                     <div>
                         <AddComment />
