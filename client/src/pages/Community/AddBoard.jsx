@@ -25,6 +25,8 @@
             height: 30px;
             font-size: ${(props) => props.theme.size.S};
             color: #535353;
+            outline: none;
+            padding-left: 10px;
         }
         .titleArea {
             width: 100%;
@@ -33,8 +35,9 @@
             font-size: ${(props) => props.theme.size.S};
             color: #535353;
             margin-top: 10px;
-            padding: 0 5px;
+            padding-left: 10px;
             box-sizing: border-box;
+            outline: none;
         }
         .textArea {
             width: 100%;
@@ -42,9 +45,10 @@
             font-size: ${(props) => props.theme.size.S};
             color: #535353;
             margin-top: 10px;
-            padding: 5px;
+            padding: 10px;
             box-sizing: border-box;
             height: 500px;
+            outline: none;
         }
         .alert {
             display: block;
@@ -138,10 +142,10 @@
                  <form onSubmit={formik.handleSubmit}>
                      <select className="selectBox" name="object" selectedValue={formik.values.object} {...formik.getFieldProps("object")}>
                         <option value="">게시글 주제 선택</option>
-                        <option value="question">궁금해요</option>
-                        <option value="together">함께해요</option>
-                        <option value="boast">자랑해요</option>
-                        <option value="etc">기타</option>
+                        <option value="궁금해요">궁금해요</option>
+                        <option value="함께해요">함께해요</option>
+                        <option value="자랑해요">자랑해요</option>
+                        <option value="기타">기타</option>
                      </select>
                      {formik.touched.object ? (formik.errors.object && (<span className="alert">{formik.errors.object}</span>)) : null}
  

@@ -13,43 +13,49 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const AddBoardContainer = styled.div`
-    margin-top: 40px;
-    .selectBox {
-        width: 100%;
-        border: 1px solid #d5d5d5;
-        height: 30px;
-        font-size: ${(props) => props.theme.size.S};
-        color: #535353;
-    }
-    .titleArea {
-        width: 100%;
-        border: 1px solid #d5d5d5;
-        height: 30px;
-        font-size: ${(props) => props.theme.size.S};
-        color: #535353;
-        margin-top: 10px;
-        padding: 0 5px;
-        box-sizing: border-box;
-    }
-    .textArea {
-        width: 100%;
-        border: 1px solid #d5d5d5;
-        font-size: ${(props) => props.theme.size.S};
-        color: #535353;
-        margin-top: 10px;
-        padding: 5px;
-        box-sizing: border-box;
-        height: 500px;
-    }
-    .alert {
-        display: block;
-        width: auto;
-        height: 20px;
-         font-size: 12px;
-         line-height: 20px;
-         color: red;
-         margin: 9px 0px 2px;
-         padding-left: 10px;
+    form {
+        padding-top: 30px;
+        .selectBox {
+            width: 100%;
+            border: 1px solid #d5d5d5;
+            height: 30px;
+            font-size: ${(props) => props.theme.size.S};
+            color: #535353;
+            outline: none;
+            padding-left: 10px;
+        }
+        .titleArea {
+            width: 100%;
+            border: 1px solid #d5d5d5;
+            height: 30px;
+            font-size: ${(props) => props.theme.size.S};
+            color: #535353;
+            margin-top: 10px;
+            padding-left: 10px;
+            box-sizing: border-box;
+            outline: none;
+        }
+        .textArea {
+            width: 100%;
+            border: 1px solid #d5d5d5;
+            font-size: ${(props) => props.theme.size.S};
+            color: #535353;
+            margin-top: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+            height: 500px;
+            outline: none;
+        }
+        .alert {
+            display: block;
+            width: auto;
+            height: 20px;
+            font-size: 12px;
+            line-height: 20px;
+            color: red;
+            margin: 9px 0px 2px;
+            padding-left: 10px;
+        }
     }
 `;
 const ButtonBox = styled.div`
@@ -132,27 +138,24 @@ const AddCommunity = memo(() => {
             {error ? (
                 <p>에러!</p>
             ) : (
-                        <form onSubmit={formik.handleSubmit}>
-                            <select className="selectBox" name="object" selectedValue={formik.values.object} {...formik.getFieldProps("object")}>
-                                <option value="">게시글 주제 선택</option>
-                                <option value="궁금해요">궁금해요</option>
-                                <option value="together">함께해요</option>
-                                <option value="boast">자랑해요</option>
-                                <option value="etc">기타</option>
-                            </select>
-                            {formik.touched.object ? (formik.errors.object && (<span className="alert">{formik.errors.object}</span>)) : null}
-
-                            <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." defaultValue={formik.values.title} {...formik.getFieldProps("title")} />
-                            {formik.touched.title ? (formik.errors.title && (<span className="alert">{formik.errors.title}</span>)) : null}
-
-                            <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." defaultValue={formik.values.content} {...formik.getFieldProps("content")} />
-                            {formik.touched.content ? (formik.errors.content && (<span className="alert">{formik.errors.content}</span>)) : null}
-                            <ButtonBox> 
-                                <Link className="cancelBtn" to="/community">취소</Link>
-                                <button className="addBtn" type="submit">수정하기</button>
-                            </ButtonBox>
-                        </form>
-
+                <form onSubmit={formik.handleSubmit}>
+                    <select className="selectBox" name="object" selectedValue={formik.values.object} {...formik.getFieldProps("object")}>
+                        <option value="">게시글 주제 선택</option>
+                        <option value="궁금해요">궁금해요</option>
+                        <option value="함께해요">함께해요</option>
+                        <option value="자랑해요">자랑해요</option>
+                        <option value="기타">기타</option>
+                    </select>
+                    {formik.touched.object ? formik.errors.object && (<span className="alert"> {formik.errors.object}</span>) : null}
+                    <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." defaultValue={formik.values.title} {...formik.getFieldProps("title")} />
+                    {formik.touched.title ? formik.errors.title && (<span className="alert"> {formik.errors.title}</span>) : null}
+                    <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." defaultValue={formik.values.content} {...formik.getFieldProps("content")} />
+                    {formik.touched.content ? formik.errors.content && (<span className="alert"> {formik.errors.content}</span>) : null}
+                    <ButtonBox>
+                        <Link className="cancelBtn" to="/community">취소</Link>
+                        <button className="addBtn" type="submit">수정하기</button>
+                    </ButtonBox>
+                </form>
             )}
         </AddBoardContainer>
     );

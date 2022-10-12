@@ -1112,27 +1112,9 @@
     },
     {
       "object": "함께해요",
-      "title": "ㄴㅇㅁㄴㅇ",
-      "content": "ㅁㄴㅇㅁㄴㅇㅁㄴ",
-      "id": 9
-    },
-    {
-      "object": "together",
-      "title": "ㄴㅁㅇㅁㄴㅇ",
-      "content": "ㅁㄴㅇㅁㄴㅇㄴㅁ",
+      "title": "테스트입니다.",
+      "content": "글 내용",
       "id": 10
-    },
-    {
-      "object": "together",
-      "title": "게시글 작성 1",
-      "content": "1111",
-      "id": 11
-    },
-    {
-      "object": "etc",
-      "title": "제목입니다.",
-      "content": "ㅁㅁㅁ",
-      "id": 12
     }
   ],
   "comment": [

@@ -12,6 +12,7 @@ import Spinner from "../Spinner";
 
 import userImage from "../../assets/img/account-LB.png";
 import more from "../../assets/img/more.png";
+import more2 from "../../assets/img/more2.png";
 import comment from "../../assets/img/comment.png";
 import commentBg from "../../assets/img/comment_bg.png";
 
@@ -36,7 +37,7 @@ const BVCss = styled.div`
             margin: auto;
             align-items: center;
             .userInfo {
-                width: 10%;
+                width: 20%;
                 height: 100%;
                 display: flex;
                 justify-content: space-evenly;
@@ -54,11 +55,22 @@ const BVCss = styled.div`
                     height: 100%;
                 }
             }
-            .etc {
-                
+            .title {
+                width: 100%;
+                height: 100%;
+            }
+            .postEtc {
+                width: 40%;
+                height: 100%;
+                display: flex;
+                justify-content: space-evenly;
+                .category {
+                    width: 100%;
+                    height: 100%;
+                }
                 .moreListBtn {
                     position: relative;
-                    width: 10%;
+                    width: 50%;
                     height: 100%;
                     background: url(${more}) no-repeat;
                     background-size: 25px 25px;
@@ -66,6 +78,12 @@ const BVCss = styled.div`
                     text-indent: -99999px;
                     cursor: pointer;
                     border: none;
+                    &:hover {
+                        background: url(${more2}) no-repeat;
+                        background-size: 25px 25px;
+                        background-position: center, center;
+                        text-indent: -99999px;
+                    }
                     .editDelBtnBox {
                         text-indent: 0;
                         width: 50px;
@@ -180,15 +198,16 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
     /** 삭제 버튼 클릭시 이벤트 처리 --> 리덕스를 통해 삭제 처리 --> data 값이 갱신 되므로 화면에 자동 반영된다. */
     const onDeleteClick = (e) => {
         e.preventDefault();
-
         const current = e.target;
-
         if (window.confirm(`정말 이 게시물을 삭제하시겠습니까?`)) {
             dispatch(
                 deleteItem({
                     id: current.dataset.id,
                 })
-            );
+            ).then(() => {
+                window.alert("게시글이 삭제되었습니다.");
+                navigate("/community", { replace: true });
+            });
         }
     };
 
@@ -205,14 +224,14 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
             <Spinner visible={loading} />
             <section className="postBox">
                 <div className="postInfo">
-                    <div className="userInfo">
-                        <span className="userImg">유저 이미지</span>
-                        <span className="userId">{id}</span>
-                    </div>
+                    <ul className="userInfo">
+                        <li className="userImg">유저 이미지</li>
+                        <li className="userId">{id}</li>
+                    </ul>
                     <span className="title">제목 : {title}</span>
-                    <div className="etc">
-                        <span className="objectSelect">분류 : {object}</span>
-                        <span className="moreListBtn" onClick={onToggle}>
+                    <ul className="postEtc">
+                        <li className="category">분류 : {object}</li>
+                        <li className="moreListBtn" onClick={onToggle}>
                             더 보기
                             {editDelBtn && (
                                 <div className="editDelBtnBox">
@@ -227,11 +246,11 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
                                     </span>
                                 </div>
                             )}
-                        </span>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
-                <div className="content">
-                    <span className="contentTx">{content}</span>
+                <div className="content">{content}
+                    <span className="contentTx"></span>
                 </div>
             </section>
             <section className="commentBox">
