@@ -108,7 +108,7 @@
  `;
  
  const Community = memo(() => {
-     const { data, loading, error } = useSelector((state) => state.community);
+     const { data, error } = useSelector((state) => state.community);
      const dispatch = useDispatch();
  
      const [loading2, setLoading2] = React.useState(false);
@@ -158,7 +158,7 @@
                  </form>
                  <Link to="/addBoard" className="addBoardBtn">게시글 작성하기</Link>
                  <div className="boardListArea">
-                     <Spinner visible={loading} />
+                     <Spinner visible={loading2} />
                      {error ? (
                          <p>에러!</p>
                      ) : searchData && searchData.length > 0 && (
