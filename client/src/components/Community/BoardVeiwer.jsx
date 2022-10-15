@@ -147,13 +147,6 @@ const BVCss = styled.div`
             flex-direction: row;
             justify-content: left;
         }
-        .commentListBox {
-            display: flex;
-            .Btn {
-                background-color: white;
-                border: none;
-            }
-        }
     }
 `;
 
