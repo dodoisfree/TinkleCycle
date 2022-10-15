@@ -14,7 +14,6 @@ import userImage from "../../assets/img/account-LB.png";
 import more from "../../assets/img/more.png";
 import more2 from "../../assets/img/more2.png";
 import comment from "../../assets/img/comment.png";
-import commentBg from "../../assets/img/comment_bg.png";
 
 const BVCss = styled.div`
     width: 95%;
@@ -153,17 +152,6 @@ const BVCss = styled.div`
             .Btn {
                 background-color: white;
                 border: none;
-            }
-        }
-        .editDelBtnBox {
-            background-image: url(${commentBg}) no-repeat;
-            .editDelBtnItem {
-                width: 25px;
-                height: 25px;
-                .editDelBtnImg {
-                    width: 25px;
-                    height: 25px;
-                }
             }
         }
     }

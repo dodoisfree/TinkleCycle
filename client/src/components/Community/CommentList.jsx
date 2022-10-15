@@ -8,7 +8,6 @@ import styled from "styled-components";
 import { getList, deleteItem } from "../../slices/CommentSlice";
 import { useSelector, useDispatch } from "react-redux";
 
-import commentBg from "../../assets/img/comment_bg.png";
 import Spinner from "../Spinner";
 import ErrorView from "../ErrorView";
 import AddComment from "../Community/Section/AddComment";
@@ -23,17 +22,6 @@ const CommentListContainer = styled.div`
         .Btn {
             background-color: white;
             border: none;
-        }
-    }
-    .editDelBtnBox {
-        background-image: url(${commentBg}) no-repeat;
-        .editDelBtnItem {
-            width: 25px;
-            height: 25px;
-            .editDelBtnImg {
-                width: 25px;
-                height: 25px;
-            }
         }
     }
 `;
