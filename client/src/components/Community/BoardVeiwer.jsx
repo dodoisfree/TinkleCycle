@@ -4,7 +4,6 @@ import { getList } from "../../slices/CommentSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import LikeBtn from "./Section/LikeBtn";
 import ErrorView from "../ErrorView";
 import AddComment from "../Community/Section/AddComment";
 import CommentListInfo from "./CommentListInfo";
@@ -14,6 +13,8 @@ import userImage from "../../assets/img/account-LB.png";
 import more from "../../assets/img/more.png";
 import more2 from "../../assets/img/more2.png";
 import comment from "../../assets/img/comment.png";
+import likeImg from "../../assets/img/heart.png";
+import disLikeImg from "../../assets/img/emptyHeart.png";
 
 const BVCss = styled.div`
     width: 95%;
@@ -146,6 +147,35 @@ const BVCss = styled.div`
             display: flex;
             flex-direction: row;
             justify-content: left;
+            align-items: center;
+            .likeBtn {
+                display: flex;
+                justify-content: left;
+                width: 40px;
+                height: 100%;
+                align-items: center;
+                .disLikeBtn {
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    background: url(${disLikeImg}) no-repeat;
+                    background-size: 20px, 20px;
+                    background-position: center, center;
+                    text-indent: -99999px;
+                }
+                .likeBtn {
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    background: url(${likeImg}) no-repeat;
+                    background-size: 20px, 20px;
+                    background-position: center, center;
+                    text-indent: -99999px;
+                }
+                .likeCounter {
+                    padding: 0 5px;
+                }
+            }
         }
     }
 `;
@@ -200,6 +230,24 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
     React.useEffect(() => {
         dispatch(getList());
     }, [dispatch]);
+
+    /** 좋아요 버튼 */
+    const [likes, setLikes] = useState(0);
+    const [isClicked, setIsClicked] = useState(false);
+    const handleClick = useCallback((e) => {
+        setIsClicked(!isClicked);
+        const target = e.target;
+  
+        if (isClicked) {
+            setLikes(likes - 1);
+            target.className = 'disLikeBtn';
+        } else {
+            setLikes(likes + 1);
+            target.className = 'likeBtn';
+        }
+    }, [isClicked, likes]);
+    console.log(isClicked, likes);
+
     return (
         <BVCss key={id}>
             <Spinner visible={loading} />
@@ -239,8 +287,9 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
                     <div onClick={toggleComment}>
                         <img className="iconImg" src={comment} alt="commentOpen" />
                     </div>
-                    <div className="LikeBtn">
-                        <LikeBtn />
+                    <div className="likeBtn">
+                        <button className="disLikeBtn" type="button" onClick={handleClick}>좋아요</button>
+                        <span className="likeCounter">{`${likes}`}</span>
                     </div>
                 </div>
                 <div className="commentOpen" style={{ display: isOpen ? "block" : "none" }}>
