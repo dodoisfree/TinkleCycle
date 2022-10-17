@@ -13,6 +13,7 @@ import userImage from "../../assets/img/account-LB.png";
 import more from "../../assets/img/more.png";
 import more2 from "../../assets/img/more2.png";
 import comment from "../../assets/img/comment.png";
+import comment2 from "../../assets/img/comment2.png";
 import likeImg from "../../assets/img/heart.png";
 import disLikeImg from "../../assets/img/emptyHeart.png";
 
@@ -144,14 +145,31 @@ const BVCss = styled.div`
     .commentBox {
         background-color: aliceblue;
         .btns {
+            width: 100%;
+            height: 27px;
             display: flex;
             flex-direction: row;
             justify-content: left;
-            align-items: center;
+            .commentIcon {
+                width: 5%;
+                height: 100%;
+                border: none;
+                background: url(${comment}) no-repeat;
+                background-size: 27px, 27px;
+                background-position: center, center;
+                text-indent: -99999px;
+                cursor: pointer;
+                &:hover {
+                    background: url(${comment2}) no-repeat;
+                    background-size: 27px, 27px;
+                    background-position: center, center;
+                    text-indent: -99999px;
+                }
+            }
             .likeBtn {
                 display: flex;
                 justify-content: left;
-                width: 40px;
+                width: 7%;
                 height: 100%;
                 align-items: center;
                 .disLikeBtn {
@@ -162,6 +180,12 @@ const BVCss = styled.div`
                     background-size: 20px, 20px;
                     background-position: center, center;
                     text-indent: -99999px;
+                    &:hover {
+                        background: url(${likeImg}) no-repeat;
+                        background-size: 20px, 20px;
+                        background-position: center, center;
+                        text-indent: -99999px;
+                    }
                 }
                 .likeBtn {
                     width: 100%;
@@ -171,6 +195,12 @@ const BVCss = styled.div`
                     background-size: 20px, 20px;
                     background-position: center, center;
                     text-indent: -99999px;
+                    &:hover {
+                        background: url(${disLikeImg}) no-repeat;
+                        background-size: 20px, 20px;
+                        background-position: center, center;
+                        text-indent: -99999px;
+                    }
                 }
                 .likeCounter {
                     padding: 0 5px;
@@ -284,9 +314,7 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
             </section>
             <section className="commentBox">
                 <div className="btns">
-                    <div onClick={toggleComment}>
-                        <img className="iconImg" src={comment} alt="commentOpen" />
-                    </div>
+                    <div className="commentIcon" onClick={toggleComment}>댓글창 아이콘</div>
                     <div className="likeBtn">
                         <button className="disLikeBtn" type="button" onClick={handleClick}>좋아요</button>
                         <span className="likeCounter">{`${likes}`}</span>
