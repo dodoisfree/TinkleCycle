@@ -120,7 +120,7 @@
      useEffect(() => {
          if (keyword === null || keyword === undefined) {
              // 전체 검색
-             setSearchData(data && data.filter((it) => it.title.includes('')));
+             setSearchData(data);
          } else {
              setSearchData(data && data.filter((it) => it.title.includes(String(keyword))));
          }

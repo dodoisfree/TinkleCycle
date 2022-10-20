@@ -54,6 +54,7 @@ const BVCss = styled.div`
                 .userId {
                     width: 100%;
                     height: 100%;
+                    margin-left: 5px;
                 }
             }
             .title {
@@ -114,32 +115,6 @@ const BVCss = styled.div`
             padding-top: 40px;
             padding-bottom: 40px;
             padding-left: 20px;
-        }
-    }
-    .writeBtn {
-        width: 25px;
-        height: 25px;
-        display: flex;
-        justify-content: right;
-        img {
-            width: 25px;
-            height: 25px;
-            justify-items: right;
-        }
-    }
-    .userInfo {
-        width: 25px;
-        height: 25px;
-        display: flex;
-        justify-content: space-evenly;
-        img {
-            width: 25px;
-            height: 25px;
-            justify-items: right;
-        }
-        .userId {
-            margin-left: 5px;
-            font-size: 13px;
         }
     }
     .commentBox {

@@ -62,6 +62,7 @@ const ButtonBox = styled.div`
     display: flex;
     justify-content: right;
     align-items: center;
+    margin-top: 10px;
     margin-bottom: 10px;
     .cancelBtn {
         border: 1px solid #f6f3f2;
