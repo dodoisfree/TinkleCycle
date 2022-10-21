@@ -110,10 +110,13 @@
  const Community = memo(() => {
      const { data, error } = useSelector((state) => state.community);
      const dispatch = useDispatch();
+
+     React.useEffect(() => {
+        dispatch(getList());
+    }, [dispatch]);
  
      const [loading2, setLoading2] = React.useState(false);
      const [keyword, setKeyword] = React.useState();
-
      const [searchData, setSearchData] = useState();
     
     console.log(data);
@@ -125,10 +128,20 @@
              setSearchData(data && data.filter((it) => it.title.includes(String(keyword))));
          }
      }, [data, keyword]);
- 
-     React.useEffect(() => {
-         dispatch(getList());
-     }, [dispatch]);
+
+     const [page, setPage] = useState(1);
+     const [sliceData, setSliceData] = useState([]);
+     const addData = React.useCallback(() => {
+         setLoading2(true);
+         setTimeout(() => {
+             setPage(page + 1);
+             setLoading2(false);
+         }, 700);
+     }, [page]);
+
+     useEffect(() => {
+        setSliceData(searchData && searchData.slice(0, page * 4));
+    }, [page, searchData]);
      
      const formik = useFormik({
          initialValues: {
@@ -161,15 +174,15 @@
                      <Spinner visible={loading2} />
                      {error ? (
                          <p>에러!</p>
-                     ) : searchData && searchData.length > 0 && (
-                         searchData.map(({ id, title, object, content }, idx) => {
+                     ) : sliceData && sliceData.length > 0 && (
+                        sliceData.map(({ id, title, object, content }, idx) => {
                              return (
                                  <BoardVeiwer key={idx} className="boardVeiwer" id={id} title={title} object={object} content={content} deleteItem={deleteItem} dispatch={dispatch} />
                              );
                          })
                      )}
                  </div>
-                 <button className="viewMore" type="button"><b>•••</b><br />더 보기</button>
+                 <button className="viewMore" type="button" onClick={addData}><b>•••</b><br />더 보기</button>
              </div>
          </CommunityContainer>
      );

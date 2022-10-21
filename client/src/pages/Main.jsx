@@ -144,9 +144,6 @@ const Main = memo(() => {
         // }
     }, [page, searchData]);
 
-    // console.log(sliceData);
-    // console.log(searchData);
-
     const formik = useFormik({
         initialValues: {
             keyword: '',
