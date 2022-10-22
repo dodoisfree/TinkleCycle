@@ -3,7 +3,6 @@ import MenuBar from "../components/MenuBar";
 import { useSelector, useDispatch } from "react-redux";
 import { getBicycles } from "../slices/RentalShopSlice";
 import Spinner from "../components/Spinner";
-// import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
 import MainList from "../components/Main/MainList";
 // import MainSearchBar from "../components/Main/MainSearchBar";
@@ -93,14 +92,6 @@ const Main = memo(() => {
         dispatch(getBicycles());
     }, [dispatch]);
 
-    // 스크롤 시 타겟 관측 라이브러리
-    // const [ref, inView] = useInView({
-    //     inView: false,
-    //     delay: 700,
-    //     root: null,
-    // });
-
-
     // 검색어에 맞게 배열 가공
     const [keyword, setKeyword] = useState();
     const [searchData, setSearchData] = useState();
@@ -116,15 +107,21 @@ const Main = memo(() => {
         }
     }, [data, keyword]);
 
+    // 내 주소 클릭 시 기본 설정된 주소 검색
     const defaultAddr = React.useCallback(() => {
         setKeyword('서초');
     }, []);
     
     /** 더보기 버튼 추가 후 클릭 시 데이터 추가로 변경 예정 */
-    // 데이터 나눠서 출력, 무한 스크롤 구현중 (현재 로딩전 출력)
+    // 데이터 나눠서 출력, 무한 스크롤 구현
     const [loading2, setLoading2] = useState(false);
     const [page, setPage] = useState(1);
     const [sliceData, setSliceData] = useState([]);
+
+    useEffect(() => {
+        setSliceData(searchData && searchData.slice(0, page * 8));
+    }, [page, searchData]);
+
     const addData = React.useCallback(() => {
         setLoading2(true);
         setTimeout(() => {
@@ -132,17 +129,6 @@ const Main = memo(() => {
             setLoading2(false);
         }, 700);
     }, [page]);
-
-    useEffect(() => {
-        setSliceData(searchData && searchData.slice(0, page * 8));
-        // if (inView && !loading2) {
-        //     setLoading2(true);
-        //     setPage(page + 1);
-        //     setTimeout(() => {
-        //         setLoading2(false);
-        //     }, 700);
-        // }
-    }, [page, searchData]);
 
     const formik = useFormik({
         initialValues: {
