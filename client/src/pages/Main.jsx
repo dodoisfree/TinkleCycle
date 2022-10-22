@@ -154,7 +154,7 @@ const Main = memo(() => {
             <Spinner visible={loading2} />
             <div className="containerSize inside">
                 <form className="searchAddress" onSubmit={formik.handleSubmit}>
-                    <button className="defaultAddr" onClick={defaultAddr}>내 주소</button>
+                    <button className="defaultAddr" type="button" onClick={defaultAddr}>내 주소</button>
                     <input id="addrIpt" className="addrIpt" type="address" name='keyword' placeholder="주소 키워드 입력." 
                         value={formik.values.keyword} {...formik.getFieldProps("keyword")} /> 
                     <button type='submit' className="searchBtn"> 검색 버튼 </button>
