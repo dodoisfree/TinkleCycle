@@ -5,16 +5,13 @@
  */
  import React, { memo } from "react";
  import styled from "styled-components";
- import { useNavigate } from "react-router-dom";
  import Spinner from "../../components/Spinner";
  import ErrorView from "../../components/ErrorView";
+ import { useNavigate } from "react-router-dom";
  import { postItem } from "../../slices/CommunitySlice";
  import { useSelector, useDispatch } from "react-redux";
- import { Link } from "react-router-dom";
  import { useFormik } from "formik";
  import * as Yup from "yup";
- 
- import CancleYN from "../../components/Modal/CancelYN";
  
  const AddBoardContainer = styled.div`
     form {
@@ -93,20 +90,20 @@
  `;
  
  const AddCommunity = memo(() => {
-     /** 저장 완료 후 목록 강제 이동을 처리하기 위한 navigate 함수 생성 */
-     // navigate 리턴받는 자체가 함수인 경우를 클로저라고 한다.
-     const navigate = useNavigate();
- 
-     // 취소확인 모달창
-     const [modal, setModal] = React.useState(false);
-     const onModalOpen = React.useCallback(() => {
-         setModal(true);
-     }, []);
      /** 리덕스 관련 초기화 */
      // data를 생성하기 때문에 data를 불러올 필요는 없다.
      const dispatch = useDispatch();
      const { loading, error } = useSelector((state) => state.community);
+
+     /** 저장 완료 후 목록 강제 이동을 처리하기 위한 navigate 함수 생성 */
+     // navigate 리턴받는 자체가 함수인 경우를 클로저라고 한다.
+     const navigate = useNavigate();
  
+     const backwards = React.useCallback(() => {
+        navigate("/community", { replace: true });
+     }, [navigate]);
+ 
+
      /**글 쓰기 */
      const formik = useFormik({
          initialValues: {
@@ -156,10 +153,7 @@
                      {formik.touched.content ? (formik.errors.content && (<span className="alert">{formik.errors.content}</span>)) : null}
  
                      <ButtonBox>
-                         {modal && (
-                             <CancleYN modal={modal} setModal={setModal} />
-                         )}
-                         <Link className="cancelBtn" onClick={onModalOpen} to="/community">취소하기</Link>
+                         <button className="cancelBtn" onClick={backwards}>취소하기</button>
                          <button className="addBtn" type="submit">등록하기</button>
                      </ButtonBox>
                  </form>

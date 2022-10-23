@@ -118,8 +118,7 @@
      const [loading2, setLoading2] = React.useState(false);
      const [keyword, setKeyword] = React.useState();
      const [searchData, setSearchData] = useState();
-    
-    console.log(data);
+     
      useEffect(() => {
          if (keyword === null || keyword === undefined) {
              // 전체 검색

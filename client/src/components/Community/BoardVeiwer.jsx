@@ -251,7 +251,6 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
             target.className = 'likeBtn';
         }
     }, [isClicked, likes]);
-    console.log(isClicked, likes);
 
     return (
         <BVCss key={id}>

@@ -8,7 +8,7 @@ import styled from "styled-components";
 import Spinner from "../../components/Spinner";
 import { getItem, putItem } from "../../slices/CommunitySlice";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -83,29 +83,24 @@ const ButtonBox = styled.div`
 `;
 
 const AddCommunity = memo(() => {
-    const { id } = useParams();
-    /** 저장 완료 후 목록 강제 이동을 처리하기 위한 navigate 함수 생성 */
-    // navigate 리턴받는 자체가 함수인 경우를 클로저라고 한다.
-    const navigate = useNavigate();
-
     /** 리덕스 관련 초기화 */
     // data를 생성하기 때문에 data를 불러올 필요는 없다.
     const dispatch = useDispatch();
     const { data, loading, error } = useSelector((state) => state.community);
-    // useEffect(() => {
-    //     data && data.map((v, i) => {
-    //         return (
-    //             v.title
-    //         )
-    //     });
-    // }, []);
-
-    console.log(data);
+    const { id } = useParams();
 
     /** 페이지가 열림과 동시에 id값에 대한 데이터를 조회하여 리덕스 상태값에 반영한다. */
     useEffect(() => {
         dispatch(getItem({ id: id })); //리덕스가 data를 조회한 다음 그 결과를 data를 셋팅함
     }, [dispatch, id]);
+
+    /** 저장 완료 후 목록 강제 이동을 처리하기 위한 navigate 함수 생성 */
+    // navigate 리턴받는 자체가 함수인 경우를 클로저라고 한다.
+    const navigate = useNavigate();
+
+    const backwards = React.useCallback(() => {
+        navigate("/community", { replace: true });
+    }, [navigate]);
 
     /**글 쓰기 */
     const formik = useFormik({
@@ -153,7 +148,7 @@ const AddCommunity = memo(() => {
                     <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." defaultValue={formik.values.content} {...formik.getFieldProps("content")} />
                     {formik.touched.content ? formik.errors.content && (<span className="alert"> {formik.errors.content}</span>) : null}
                     <ButtonBox>
-                        <Link className="cancelBtn" to="/community">취소</Link>
+                        <button className="cancelBtn" onClick={backwards}>취소</button>
                         <button className="addBtn" type="submit">수정하기</button>
                     </ButtonBox>
                 </form>
