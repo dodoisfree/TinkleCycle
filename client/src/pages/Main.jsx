@@ -9,6 +9,7 @@ import MainList from "../components/Main/MainList";
 import Search1 from "../assets/img/search-w.png";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useRef } from "react";
 
 const MainCss = styled.div`
     .rtShopArea {
@@ -108,10 +109,13 @@ const Main = memo(() => {
     }, [data, keyword]);
 
     // 내 주소 클릭 시 기본 설정된 주소 검색
+    const refIpt = useRef();
     const defaultAddr = React.useCallback(() => {
         setKeyword('서초');
+        refIpt.current.placeholder = '서초';
     }, []);
-    
+    console.log();
+
     /** 더보기 버튼 추가 후 클릭 시 데이터 추가로 변경 예정 */
     // 데이터 나눠서 출력, 무한 스크롤 구현
     const [loading2, setLoading2] = useState(false);
@@ -155,7 +159,7 @@ const Main = memo(() => {
             <div className="containerSize inside">
                 <form className="searchAddress" onSubmit={formik.handleSubmit}>
                     <button className="defaultAddr" type="button" onClick={defaultAddr}>내 주소</button>
-                    <input id="addrIpt" className="addrIpt" type="address" name='keyword' placeholder="주소 키워드 입력." 
+                    <input id="addrIpt" className="addrIpt" type="address" name='keyword' ref={refIpt} placeholder="주소 키워드 입력." 
                         value={formik.values.keyword} {...formik.getFieldProps("keyword")} /> 
                     <button type='submit' className="searchBtn"> 검색 버튼 </button>
                 </form>
