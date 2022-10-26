@@ -73,7 +73,7 @@ const AttractionItem = memo(({item: {src, title, address}}) => {
                 </Imgbox>
             </div>
             <div className="modal">
-                {clickedImg && (<AttractionModal clickedImg={clickedImg}setClickedImg={setClickedImg} title={title} address={address}/>)}
+                {clickedImg && (<AttractionModal clickedImg={clickedImg} setClickedImg={setClickedImg} title={title} address={address}/>)}
             </div>
         </Container>
     );
