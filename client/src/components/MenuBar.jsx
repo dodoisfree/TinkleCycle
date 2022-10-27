@@ -37,7 +37,6 @@ const MenuBar = memo(() => {
         const link = e.target;
         link.style.backgroundColor = '#98d6f6';
         link.style.color = 'white';
-        console.log(link);
     }, []);
 
     return (
