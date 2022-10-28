@@ -1,5 +1,4 @@
 import React, { memo, useState, useEffect } from "react";
-import MenuBar from "../components/MenuBar";
 import { useSelector, useDispatch } from "react-redux";
 import { getBicycles } from "../slices/RentalShopSlice";
 import Spinner from "../components/Spinner";
@@ -154,7 +153,6 @@ const Main = memo(() => {
 
     return (
         <MainCss> 
-            <MenuBar />
             <Spinner visible={loading2} />
             <div className="containerSize inside">
                 <form className="searchAddress" onSubmit={formik.handleSubmit}>

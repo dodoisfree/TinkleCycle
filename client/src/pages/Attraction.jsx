@@ -5,15 +5,12 @@
  */
 import React, { memo } from 'react';
 import {Routes, Route} from 'react-router-dom';
-
-import MenuBar from '../components/MenuBar';
 import AttractionContent from '../components/Attraction/AttractionContent';
 import AttractionMenu from '../components/Attraction/AttractionMenu';
 
 const Attraction = memo(() => {
     return (
         <>
-            <MenuBar />
             <AttractionMenu />
             <div className='containerSize media'>
                 <Routes>

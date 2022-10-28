@@ -5,7 +5,6 @@
  */
 
  import React, { memo, useEffect, useState } from "react";
- import MenuBar from "../../components/MenuBar";
  import { useSelector, useDispatch } from "react-redux";
  import { getList, deleteItem } from "../../slices/CommunitySlice";
  import Spinner from "../../components/Spinner";
@@ -162,7 +161,6 @@
  
      return (
          <CommunityContainer>
-             <MenuBar />
              <div className="containerSize media">
                  <form className="searchAddress" onSubmit={formik.handleSubmit}>
                      <input id="addrIpt" className="addrIpt" type="address" name="keyword" placeholder="제목으로 게시글 검색" value={formik.values.keyword} {...formik.getFieldProps("keyword")} />
