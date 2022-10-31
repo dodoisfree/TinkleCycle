@@ -35,42 +35,26 @@ const MenuBar = memo(() => {
     const [inOut, setInOut] = useState(false);
 
     const menuClick = React.useCallback((e) => {
-        setInOut((inOut) => !inOut);
         const link = e.target;
-        link.style.backgroundColor = "#98d6f6";
-        link.style.color = "white";
-    }, []);
-
-    const mouseInOut = React.useEffect(() => {
-        if (inOut === true) {
-
+        setInOut((inOut) => !inOut);
+        if (inOut === false) {
+            link.style.backgroundColor = "#98d6f6";
+            link.style.color = "white";
+        } else {
+            link.style.backgroundColor = "white";
+            link.style.color = "black";
         }
-    }, []);
+    }, [inOut]);
+
+    console.log(inOut);
 
     return (
         <MenuBarContainer className="containerSize media">
             <nav>
-                <NavLink
-                    className="link"
-                    to="/"
-                    onClick={menuClick}
-                    onMouseOut={mouseInOut}
-                >
-                    대여소찾기
-                </NavLink>
-                <NavLink
-                    className="link"
-                    to="/attraction/gangnam"
-                    onClick={menuClick}
-                >
-                    추천명소
-                </NavLink>
-                <NavLink className="link" to="/community" onClick={menuClick}>
-                    커뮤니티
-                </NavLink>
-                <NavLink className="link" to="/mypage" onClick={menuClick}>
-                    마이페이지
-                </NavLink>
+                <NavLink className="link" to="/" onClick={menuClick} onMouseOut={menuClick}>대여소찾기</NavLink>
+                <NavLink className="link" to="/attraction/gangnam" onClick={menuClick}>추천명소</NavLink>
+                <NavLink className="link" to="/community" onClick={menuClick}>커뮤니티</NavLink>
+                <NavLink className="link" to="/mypage" onClick={menuClick}>마이페이지</NavLink>
             </nav>
         </MenuBarContainer>
     );
