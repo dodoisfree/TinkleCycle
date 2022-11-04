@@ -15,7 +15,7 @@ const TopButton = styled.button`
   right: 20px;
   bottom: 20px;
   z-index: 100;
-  &:active {
+  &:hover {
     background: url(${upBtn2}) center center no-repeat;
     background-size: 100% 100%;
   }

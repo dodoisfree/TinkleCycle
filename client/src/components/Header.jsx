@@ -35,11 +35,12 @@ const RightContainer = styled.div`
     .join{
       padding: 5px;
       margin-right:10px;
-      border: 1px solid white;
+      border: 1px solid #228AE6;
       color: white;
+      background-color: #228AE6;
       &:hover{
         background-color: #228AE6;
-        border: 1px solid #228AE6;
+        border: 1px solid white;
       }
     }
 `;
