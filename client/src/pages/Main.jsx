@@ -179,10 +179,6 @@ const Main = memo(() => {
                 </div>
                 <button className="viewMore" type="button" onClick={addData}><b>•••</b><br/>더 보기</button>
             </div>
-
-            {/* 스크롤 시 타겟 관측 영역
-            <div ref={ref}></div>   */}
-
         </MainCss>
     );
 });
