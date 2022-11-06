@@ -270,7 +270,7 @@ const MainRezSet = memo(({ pakingTotal, isOpen, open }) => {
     initialValues: {
       bicCnt: "",
       date: defaultDay.format("D"),
-      startTime: "",
+      startTime: defaultDay.locale('ko').format("A") + defaultDay.format("hh") + ':' + defaultDay.format("mm"),
       sTime: defaultDay.locale('ko').format("A"),
       sHr: defaultDay.format("h"),
       sMin: defaultDay.format("mm"),

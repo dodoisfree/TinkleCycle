@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 
-const MainRezSetTime = memo(({ formik, class1, class2, class3, name1, name2, name3, name4, content, color }) => {
+const MainRezSetTime = memo(({ formik, class1, class2, class3, name1, name2, name3, name4, content }) => {
 
   const [hour, setHr] = useState([]);
   const [min, setMin] = useState([]);
