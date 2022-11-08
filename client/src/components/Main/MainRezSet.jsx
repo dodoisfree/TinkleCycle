@@ -275,7 +275,7 @@ const MainRezSet = memo(({ pakingTotal, isOpen, open }) => {
       sHr: defaultDay.format("h"),
       sMin: defaultDay.format("mm"),
       endTime: "",
-      eTime: defaultDay.locale('ko').format("A"),
+      eTime: defaultDay.locale('ko').format("A") + defaultDay.format("hh") + ':' + defaultDay.format("mm"),
       eHr: defaultDay.format("h"),
       eMin: defaultDay.format("mm"),
     },
