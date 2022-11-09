@@ -53,7 +53,7 @@ const FindPwCss = styled.div`
             margin-top: 0;
           }
           .input {
-             box-sizing: border-box;
+            box-sizing: border-box;
             width: 100%;
             height: 45px;
             padding: 0;
@@ -61,6 +61,7 @@ const FindPwCss = styled.div`
             border: 0;
             border-bottom: 1px solid gray;
             outline: none;
+            margin-top: 10px;
             margin-bottom: 10px;
           }
         }
@@ -109,6 +110,7 @@ const FindPwCss = styled.div`
           }
         }
         .setPwBox {
+          margin-top: 30px;
           display: none;
         }
       }
