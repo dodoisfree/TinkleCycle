@@ -7,6 +7,7 @@ const MyPageCss = styled.div`
     width: 100%;
     height: auto;
     .containerSize {
+        margin-top: 40px;
         margin-bottom: 40px;
     }
 `;
@@ -15,8 +16,14 @@ const MyPage = memo(() => {
     return (
         <MyPageCss>
             <div className="containerSize">
-                <MainList />
-                <BoardVeiwer />
+                <div className="myRez">
+                    <p>내 예약 목록</p>
+                    <MainList />
+                </div>
+                <div className="myStory">
+                    <p>내 글 목록</p>
+                    <BoardVeiwer />
+                </div>
             </div>
         </MyPageCss>
     );
