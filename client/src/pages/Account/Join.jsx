@@ -22,6 +22,7 @@ const JoinCss = styled.div`
       display: flex;
       flex-direction: column;
       .title {
+        margin-top: 20px;
         padding-top: 20px;
         padding-bottom: 20px;
         h1,
@@ -66,6 +67,7 @@ const JoinCss = styled.div`
             border: 0;
             border-bottom: 1px solid gray;
             outline: none;
+            margin-top: 10px;
             margin-bottom: 10px;
           }
         }
