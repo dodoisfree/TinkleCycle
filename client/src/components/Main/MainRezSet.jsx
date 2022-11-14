@@ -274,14 +274,20 @@ const MainRezSet = memo(({ pakingTotal, isOpen, open }) => {
       sTime: defaultDay.locale('ko').format("A"),
       sHr: defaultDay.format("h"),
       sMin: defaultDay.format("mm"),
-      endTime: "",
-      eTime: defaultDay.locale('ko').format("A") + defaultDay.format("hh") + ':' + defaultDay.format("mm"),
+      endTime: defaultDay.locale('ko').format("A") + defaultDay.format("hh") + ':' + defaultDay.format("mm"),
+      eTime: defaultDay.locale('ko').format("A"),
       eHr: defaultDay.format("h"),
       eMin: defaultDay.format("mm"),
     },
-    validationSchema: Yup.object({}),
+    validationSchema: Yup.object({
+        bicCnt: Yup.string().required("필수 입력사항입니다."),
+        date: Yup.string().required("필수 입력사항입니다."),
+        startTime: Yup.string().required("필수 입력사항입니다."),
+        endTime: Yup.string().required("필수 입력사항입니다."),
+    }),
     onSubmit: (values) => {
-      console.log(values);
+        console.log(formik.errors.bicCnt);
+        console.log(values);
     },
   });
 
