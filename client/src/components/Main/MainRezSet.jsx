@@ -286,7 +286,6 @@ const MainRezSet = memo(({ pakingTotal, isOpen, open }) => {
         endTime: Yup.string().required("필수 입력사항입니다."),
     }),
     onSubmit: (values) => {
-        console.log(formik.errors.bicCnt);
         console.log(values);
     },
   });
@@ -327,6 +326,7 @@ const MainRezSet = memo(({ pakingTotal, isOpen, open }) => {
                 <input id="bicCnt" className="bicCnt input" type="number" name="bicCnt" placeholder={(pakingTotal <= 0) ? "보유 수량없음" : "수량선택"} max={pakingTotal} min={0} 
                 disabled={(pakingTotal <= 0) ? true : false} {...formik.getFieldProps("bicCnt")} />
                 <span><b style={Number(pakingTotal) === 0 ? { color: "red" } : { color: "blue" }}>{pakingTotal}</b> 대 (보유수량)</span>
+                {formik.errors.bicCnt ? alert(formik.errors.bicCnt) : null}
               </div>
             </div>
           </section>
