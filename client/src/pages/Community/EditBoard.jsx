@@ -102,6 +102,14 @@ const AddCommunity = memo(() => {
         navigate("/community", { replace: true });
     }, [navigate]);
 
+    console.log(data.object);
+    // useEffect(() => {
+    //     data && data.map((e) => {
+    //         return (
+
+    //         )
+    //     })
+    // }, []);
     /**글 쓰기 */
     const formik = useFormik({
         initialValues: {

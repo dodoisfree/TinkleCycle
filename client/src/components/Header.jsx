@@ -42,6 +42,7 @@ const RightContainer = styled.div`
             background-color: #228ae6;
             border: 1px solid #228ae6;
         }
+        /** 호버 적용 안됨 */
     }
 `;
 const Header = memo(() => {
