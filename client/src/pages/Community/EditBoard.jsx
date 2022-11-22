@@ -113,7 +113,7 @@ const AddCommunity = memo(() => {
     /**글 쓰기 */
     const formik = useFormik({
         initialValues: {
-            object: data.object,
+            object: '궁금해요',
             title: data.title,
             content: data.content,
         },
@@ -143,7 +143,7 @@ const AddCommunity = memo(() => {
                 <p>에러!</p>
             ) : (
                 <form onSubmit={formik.handleSubmit}>
-                    <select className="selectBox" name="object" selectedValue={formik.values.object} {...formik.getFieldProps("object")}>
+                    <select className="selectBox" name="object" value={formik.values.object} {...formik.getFieldProps("object")}>
                         <option value="">게시글 주제 선택</option>
                         <option value="궁금해요">궁금해요</option>
                         <option value="함께해요">함께해요</option>
