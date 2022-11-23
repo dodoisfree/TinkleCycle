@@ -43,7 +43,7 @@ const MenuBar = memo(() => {
     const menuBlur = React.useCallback((e) => {
         const link = e.target;
         link.style.backgroundColor = "white";
-        link.style.color = "black";
+        link.style.color = "#535353";
     }, []);
     // console.log(inOut);
 

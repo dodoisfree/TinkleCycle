@@ -75,9 +75,10 @@ const MainCss = styled.div`
         font-size: 20px;
         line-height: 30px;
         margin-bottom: 30px;
-        border: 1px solid #eee;
-        background-color: #eee;
+        border: 1px solid #98d6f6;
+        background-color: #98d6f6;
         border-radius: 10px;
+        color: white;
         &:hover {
             background-color: #228ae6;
         }
@@ -177,7 +178,7 @@ const Main = memo(() => {
                         )
                     )}
                 </div>
-                <button className="viewMore" type="button" onClick={addData}><b>•••</b><br/>더 보기</button>
+                <button className="viewMore" type="button" onClick={addData}><b>•••</b></button>
             </div>
         </MainCss>
     );
