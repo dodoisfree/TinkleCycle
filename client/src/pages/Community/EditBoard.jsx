@@ -100,6 +100,7 @@ const AddCommunity = memo(() => {
 
     const backwards = React.useCallback(() => {
         navigate("/community", { replace: true });
+        console.log('실행됨');
     }, [navigate]);
 
     console.log(data.object);

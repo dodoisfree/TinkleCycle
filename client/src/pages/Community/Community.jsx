@@ -171,7 +171,7 @@
                  <div className="boardListArea">
                      <Spinner visible={loading2} />
                      {error ? (
-                         <p>에러!</p>
+                         <p>로딩중 에러!</p>
                      ) : sliceData && sliceData.length > 0 && (
                         sliceData.map(({ id, title, object, content }, idx) => {
                              return (
