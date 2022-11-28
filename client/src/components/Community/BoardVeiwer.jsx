@@ -183,9 +183,10 @@ const BVCss = styled.div`
             }
         }
         .commentOpen {
-            position: relative;
             width: 100%;
             height: 100%;
+            transition: all 0.5s;
+            position: relative;
             /** 여 닫기 애니메이션 추가, CommentList, ListInfo 합치기 */
         }
     }
@@ -300,7 +301,7 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
                         <span className="likeCounter">{`${likes}`}</span>
                     </div>
                 </div>
-                <div className="commentOpen" style={{ display: isOpen ? "block" : "none" }}>
+                <div className="commentOpen" style={{ height: isOpen ? "215px" : "0" }}>
                     {error ? (
                         <ErrorView error={error} />
                     ) : data && data.length > 0 && (
