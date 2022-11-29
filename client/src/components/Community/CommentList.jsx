@@ -16,8 +16,6 @@ import CommentListInfo from "./CommentListInfo";
 
 const CommentListContainer = styled.div`
     /** 여 닫기 애니메이션 추가, CommentList, ListInfo 합치기 */
-    position: absolute;
-    margin-top: 10px;
     border: 1px solid #d5d5d5;
     .commentListBox {
         display: flex;
