@@ -1,6 +1,6 @@
 /**
  * @file: AddComment.jsx
- * @description: 댓글 생성 구현
+ * @description: 댓글 생성 구현 ---- 파일 삭제 예정
  * @author: 천경재
  */
  import React,{ memo} from 'react';
