@@ -77,35 +77,29 @@ const CommentList = memo(() => {
     }, [dispatch]);
 
     return (
-        <>
+        <CommentListCss>
             <Spinner visible={loading} />
-            <CommentListCss>
-                {/* {error ? (
-                    <ErrorView error={error} />
-                ) : data && data.length > 0 ? (
-                    data.map(({ id, comment }, i) => {
-                        return ( <CommentListInfo key={i} id={id} comment={comment} dispatch={dispatch} deleteItem={deleteItem} />
-                        );
-                    })
-                ) : (
-                    <ul>
-                        <li>아직 댓글이 없습니다.</li>
-                    </ul>
-                )} */}
-                <CommentListInfo/>
-                <div className="addComment">
-                        <form className="commentBox" onSubmit={onSubmit}>
-                            <input
-                                className="commentInput"
-                                type="text"
-                                placeholder="댓글을 작성해주세요"
-                                name="comment"
-                            />
-                            <button type="submit" className="addBtn"></button>
-                        </form>
-                </div>
-            </CommentListCss>
-        </>
+            {/* {error ? (
+                <ErrorView error={error} />
+            ) : data && data.length > 0 ? (
+                data.map(({ id, comment }, i) => {
+                    return ( <CommentListInfo key={i} id={id} comment={comment} dispatch={dispatch} deleteItem={deleteItem} />
+                    );
+                })
+            ) : (
+                <ul>
+                    <li>아직 댓글이 없습니다.</li>
+                </ul>
+            )} */}
+            <CommentListInfo/>
+            <div className="addComment">
+                <form className="commentBox" onSubmit={onSubmit}>
+                    <input className="commentInput" type="text" placeholder="댓글을 작성해주세요" name="comment" />
+                    <button type="submit" className="addBtn"></button>
+                </form>
+            </div>
+
+        </CommentListCss>
     );
 });
 
