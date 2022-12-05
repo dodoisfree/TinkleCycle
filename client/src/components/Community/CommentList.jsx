@@ -79,7 +79,7 @@ const CommentList = memo(() => {
     return (
         <CommentListCss>
             <Spinner visible={loading} />
-            {/* {error ? (
+            {error ? (
                 <ErrorView error={error} />
             ) : data && data.length > 0 ? (
                 data.map(({ id, comment }, i) => {
@@ -90,15 +90,14 @@ const CommentList = memo(() => {
                 <ul>
                     <li>아직 댓글이 없습니다.</li>
                 </ul>
-            )} */}
-            <CommentListInfo/>
+            )}
+            {/* <CommentListInfo /> */}
             <div className="addComment">
                 <form className="commentBox" onSubmit={onSubmit}>
                     <input className="commentInput" type="text" placeholder="댓글을 작성해주세요" name="comment" />
                     <button type="submit" className="addBtn"></button>
                 </form>
             </div>
-
         </CommentListCss>
     );
 });
