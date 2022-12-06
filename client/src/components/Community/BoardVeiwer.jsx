@@ -1,11 +1,12 @@
 import React, { memo, useCallback, useState } from "react";
 
-import { getList } from "../../slices/CommentSlice";
+import { getList, postItem } from "../../slices/CommentSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import ErrorView from "../ErrorView";
 import AddComment from "../Community/Section/AddComment";
+import regexHelper from "../../libs/RegexHelper";
 import CommentListInfo from "./CommentListInfo";
 import Spinner from "../Spinner";
 
@@ -16,6 +17,7 @@ import comment from "../../assets/img/comment.png";
 import comment2 from "../../assets/img/comment2.png";
 import likeImg from "../../assets/img/heart.png";
 import disLikeImg from "../../assets/img/emptyHeart.png";
+import AddBtn from '../../assets/img/next.png';
 
 const BVCss = styled.div`
     width: 95%;
@@ -188,6 +190,28 @@ const BVCss = styled.div`
             transition: all 0.5s;
             position: relative;
             /** 여 닫기 애니메이션 추가, CommentList, ListInfo 합치기 */
+            .commentBox {
+                width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+                display: flex;
+                justify-content: center;
+                .commentInput {
+                    width: 80%;
+                    border: 2px solid #f6f3f2;
+                    padding-left: 10px;
+                    outline: none;
+                }
+                .addBtn {
+                    width: 30px;
+                    height: 30px;
+                    background: url(${AddBtn}) no-repeat;
+                    background-size: cover;
+                    background-position: center, center;
+                    border: none;
+                    margin-left: 5px;
+                }
+            }
         }
     }
 `;
@@ -208,26 +232,21 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
     }, []);
 
     /** 수정 버튼 클릭 이벤트 처리 --> 수정 페이지로 이동. 수정 대상에 대한 id를 path 파라미터로 전달함 */
-    const onEditClick = useCallback(
-        (e) => {
-            e.preventDefault();
-            const current = e.target;
-            const id = current.dataset.id; // 숨겨놓은 data-id 값을 가져오라는 의미
-            navigate(`/editBoard/${id}`);
-        },
-        [navigate]
-    );
+    const onEditClick = useCallback((e) => {
+        e.preventDefault();
+        const current = e.target;
+        const id = current.dataset.id; // 숨겨놓은 data-id 값을 가져오라는 의미
+        navigate(`/editBoard/${id}`);
+    }, [navigate]);
 
     /** 삭제 버튼 클릭시 이벤트 처리 --> 리덕스를 통해 삭제 처리 --> data 값이 갱신 되므로 화면에 자동 반영된다. */
     const onDeleteClick = (e) => {
         e.preventDefault();
         const current = e.target;
         if (window.confirm(`정말 이 게시물을 삭제하시겠습니까?`)) {
-            dispatch(
-                deleteItem({
-                    id: current.dataset.id,
-                })
-            ).then(() => {
+            dispatch(deleteItem({
+                id: current.dataset.id,
+            })).then(() => {
                 window.alert("게시글이 삭제되었습니다.");
                 navigate("/community", { replace: true });
             });
@@ -249,15 +268,40 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
     const handleClick = useCallback((e) => {
         setIsClicked(!isClicked);
         const target = e.target;
-  
+
         if (isClicked) {
             setLikes(likes - 1);
-            target.className = 'disLikeBtn';
+            target.className = "disLikeBtn";
         } else {
             setLikes(likes + 1);
-            target.className = 'likeBtn';
+            target.className = "likeBtn";
         }
     }, [isClicked, likes]);
+
+    /**<form>의 submit 버튼이 눌러졌을 때 호출될 이벤트 핸들러 */
+    const onSubmit = React.useCallback((e) => {
+        e.preventDefault();
+        // 이벤트가 발생한 폼 객체
+        const current = e.target;
+
+        //입력값에 대한 유효성 검사
+        try {
+            regexHelper.value(current.comment, "댓글을 입력하세요.");
+            regexHelper.minLength(current.comment, 2, "댓글은 최소 2글자 이상 입력해야합니다.");
+            regexHelper.maxLength(current.comment, 20, "댓글은 최대 15글자 까지 가능합니다.");
+            window.alert("댓글이 등록 되었습니다.");
+        } catch (e) {
+            window.alert("댓글을 등록 하지 못했습니다.");
+            e.field.focus();
+            return;
+        }
+        // 리덕스(Ajax처리)를 통해 데이터 저장 요청 --> 처리가 완료된 후 목록 페이지로 강제 이동한다.
+        // 비동기 처리이기 때문에 리덕스의 함수를 dispatch한 다음에 그에 대한 후속 처리를 한다면
+        // 리덕스 자체가 promise객체이기 때문에 then을 사용해야한다
+        dispatch(postItem({
+            comment: current.comment.value
+        }));
+    }, [dispatch]);
 
     return (
         <BVCss key={id}>
@@ -289,9 +333,7 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
                         </li>
                     </ul>
                 </div>
-                <div className="content">{content}
-                    <span className="contentTx"></span>
-                </div>
+                <div className="content">{content}<span className="contentTx"></span></div>
             </section>
             <section className="commentBox">
                 <div className="btns">
@@ -305,15 +347,17 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
                 <div className="commentOpen" style={{ display: isOpen ? "block" : "none" }}>
                     {error ? (
                         <ErrorView error={error} />
-                    ) : data && data.length > 0 && (
-                        data.map(({ id, comment }, i) => {
+                    ) : ( data && data.length > 0 && data.map(({ id, comment }, i) => {
                             return (
                                 <CommentListInfo key={i} id={id} comment={comment} dispatch={dispatch} deleteItem={deleteItem} />
                             );
                         })
                     )}
-                    <div>
-                        <AddComment />
+                    <div className="addComment">
+                        <form className="commentBox" onSubmit={onSubmit}>
+                            <input className="commentInput" type="text" placeholder="댓글을 작성해주세요" name="comment" />
+                            <button type="submit" className="addBtn"></button>
+                        </form>
                     </div>
                 </div>
             </section>
