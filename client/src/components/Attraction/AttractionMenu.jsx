@@ -30,6 +30,7 @@ const Gumenu = styled(NavLink)`
     font-size: 15px;
     margin-right: 10px;
     margin-bottom: 8px;
+    text-align: center;
     color: #535353;
     &.active {
         background: #98d6f6;

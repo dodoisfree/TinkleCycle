@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import ErrorView from "../ErrorView";
-import AddComment from "../Community/Section/AddComment";
 import regexHelper from "../../libs/RegexHelper";
 import CommentListInfo from "./CommentListInfo";
 import Spinner from "../Spinner";
