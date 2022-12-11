@@ -3,12 +3,14 @@
  * @description: 댓글 생성 구현 ---- 파일 삭제 예정
  * @author: 천경재
  */
- import React,{ memo} from 'react';
- import styled from 'styled-components';
- import Spinner from '../../Spinner';
- import ErrorView from '../../ErrorView';
- import { useDispatch,useSelector } from "react-redux";
+import React,{ memo} from 'react';
+import styled from 'styled-components';
+import Spinner from '../../Spinner';
+import ErrorView from '../../ErrorView';
+import { useDispatch,useSelector } from "react-redux";
 import {postItem} from '../../../slices/CommentSlice';
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 import AddBtn from '../../../assets/img/next.png'
 
@@ -47,6 +49,27 @@ const AddComment = memo(() =>{
     // data를 생성하기 때문에 data를 불러올 필요는 없다.
     const dispatch = useDispatch();
     const {loading, error} = useSelector((state)=> state.comment);
+
+    const formik = useFormik({
+        initialValues: {
+          id: "",
+          pw: "",
+          pwCfm: "",
+          name: "",
+          email: "",
+          codeNum: "",
+          sex: "",
+        },
+        validationSchema: Yup.object({
+            comment: Yup.string()
+            .required("댓글을 입력하세요.")
+            .min(2, '댓글은 최소 2글자 이상 입력해야합니다.')
+            .max(15, "댓글은 최대 15글자 까지 가능합니다."),
+        }),
+        onSubmit: (values) => {
+          
+        },
+      });
 
   /**<form>의 submit 버튼이 눌러졌을 때 호출될 이벤트 핸들러 */
   const onSubmit = React.useCallback((e)=>{
