@@ -68,6 +68,9 @@ const AddComment = memo(() =>{
         }),
         onSubmit: (values) => {
             window.alert('댓글이 등록 되었습니다.');
+            dispatch(postItem({
+                comment:values.comment
+            }));
         },
       });
 

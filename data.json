@@ -1131,30 +1131,6 @@
   ],
   "comment": [
     {
-      "comment": "안녕",
-      "id": 3
-    },
-    {
-      "comment": "하세요",
-      "id": 4
-    },
-    {
-      "comment": "하이하이",
-      "id": 5
-    },
-    {
-      "comment": "sfddf",
-      "id": 6
-    },
-    {
-      "comment": "안녕",
-      "id": 7
-    },
-    {
-      "comment": "안녕",
-      "id": 8
-    },
-    {
       "comment": "하이",
       "id": 9
     },
@@ -1165,6 +1141,10 @@
     {
       "comment": "테스트",
       "id": 11
+    },
+    {
+      "comment": "테스트2",
+      "id": 12
     }
   ],
   "bicycles": [
