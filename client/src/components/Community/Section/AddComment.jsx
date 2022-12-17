@@ -56,7 +56,7 @@ const AddComment = memo(() =>{
         },
         validationSchema: Yup.object({
             comment: Yup.string()
-            .required("댓글을 입력하세요.")
+            .required("댓글을 입력해주세요.")
             .min(2, '댓글은 최소 2글자 이상 입력해야합니다.')
             .max(15, "댓글은 최대 15글자 까지 가능합니다."),
         }),
