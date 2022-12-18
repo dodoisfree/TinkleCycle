@@ -72,6 +72,9 @@ const AddComment = memo(() =>{
     },
     validationSchema: Yup.object({
         comment: Yup.string()
+        .required("댓글을 입력해주세요.")
+        .min(2, '댓글은 최소 2글자 이상 입력해야합니다.')
+        .max(15, "댓글은 최대 15글자 까지 가능합니다."),
     }),
     onSubmit: (values) => {
         window.alert('댓글이 등록 되었습니다.');
@@ -91,7 +94,7 @@ const AddComment = memo(() =>{
         <ErrorView error={error}/>
        ) :(
         <form onSubmit={formik.handleSubmit}>
-            <input type="text" placeholder="댓글을 작성해주세요" name="comment" defaultValue={data?.comment} />
+            <input type="text" placeholder="댓글을 작성해주세요" name="comment" defaultValue={data?.comment} {...formik.getFieldProps("comment")} />
             <button className='addBtn' type="submit"><img src={AddBtn} alt="addBtn" /></button>
             {formik.touched.comment ? (<span className="alert">{formik.errors.comment}</span>) : null}
         </form>

@@ -75,7 +75,7 @@ const AddComment = memo(() =>{
         <ErrorView error={error}/>
        ) :(
       <form className='commentBox' onSubmit={formik.handleSubmit}>
-          <input className='commentInput' type="text" placeholder="댓글을 작성해주세요" name="comment" />
+          <input className='commentInput' type="text" placeholder="댓글을 작성해주세요" name="comment" value={formik.values.comment} {...formik.getFieldProps("comment")} />
           <button className='addBtn' type="submit"></button>
         </form>
          )
