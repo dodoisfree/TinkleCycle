@@ -39,33 +39,6 @@ const AddComment = memo(() =>{
     dispatch(getItem({id: id}));  //리덕스가 data를 조회한 다음 그 결과를 data를 셋팅함 
   },[dispatch,id]);
 
-//   /**<form>의 submit 버튼이 눌러졌을 때 호출될 이벤트 핸들러 */
-//   const onSubmit = React.useCallback((e)=>{
-//     e.preventDefault();
-
-//     // 이벤트가 발생한 폼 객체
-//     const current = e.target;
-//     //입력값에 대한 유효성 검사
-//     try{
-//         regexHelper.value(current.comment, '댓글을 입력하세요.');
-//         regexHelper.minLength(current.comment, 2, '댓글은 최소 2글자 이상 입력해야합니다.');
-//         regexHelper.maxLength(current.comment, 20, '댓글은 최대 15글자 까지 가능합니다.');
-    
-//         window.alert('댓글 수정이 되었습니다.');
-//       }catch(e){
-//       window.alert("댓글 수정을 하지 못했습니다.");
-//       e.field.focus();
-//       return;
-//     }
-
-//    //싱글페이지에서 사용할 수 있는 방법 구상
-//     dispatch(putItem({
-//       comment:current.comment.value
-//     })).then(()=>{    // then 함수를 처리하고 콜백을 넣어야함
-//       navigate("/community");
-//     });
-//   },[dispatch, navigate]);
-
   const formik = useFormik({
     initialValues: {
         comment: "",
@@ -86,6 +59,7 @@ const AddComment = memo(() =>{
     },
   });
 
+  console.log(data);
 
     return (
       <CommentContainer className="containerSize inside">
@@ -94,14 +68,10 @@ const AddComment = memo(() =>{
         <ErrorView error={error}/>
        ) :(
         <form onSubmit={formik.handleSubmit}>
-            <input type="text" placeholder="댓글을 작성해주세요" name="comment" defaultValue={data?.comment} {...formik.getFieldProps("comment")} />
+            <input type="text" placeholder="댓글을 작성해주세요" name="comment" value={data?.comment} {...formik.getFieldProps("comment")} />
             <button className='addBtn' type="submit"><img src={AddBtn} alt="addBtn" /></button>
             {formik.touched.comment ? (<span className="alert">{formik.errors.comment}</span>) : null}
         </form>
-    //   <form onSubmit={onSubmit}>
-    //       <input type="text" placeholder="댓글을 작성해주세요" name="comment" defaultValue={data?.comment} />
-    //       <button type="submit" className='addBtn'><img src={AddBtn} alt="addBtn" /></button>
-    //     </form>
          )
         }
       </CommentContainer>

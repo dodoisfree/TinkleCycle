@@ -114,7 +114,7 @@ const AddCommunity = memo(() => {
     /**글 쓰기 */
     const formik = useFormik({
         initialValues: {
-            object: '궁금해요',
+            object: data.object,
             title: data.title,
             content: data.content,
         },
@@ -136,6 +136,7 @@ const AddCommunity = memo(() => {
             });
         },
     });
+console.log(data.object,data.title);
 
     return (
         <AddBoardContainer className="containerSize inside">
@@ -144,7 +145,7 @@ const AddCommunity = memo(() => {
                 <p>에러!</p>
             ) : (
                 <form onSubmit={formik.handleSubmit}>
-                    <select className="selectBox" name="object" value={formik.values.object} {...formik.getFieldProps("object")}>
+                    <select className="selectBox" name="object" defaultValue={data?.object} {...formik.getFieldProps("object")}>
                         <option value="">게시글 주제 선택</option>
                         <option value="궁금해요">궁금해요</option>
                         <option value="함께해요">함께해요</option>
@@ -152,9 +153,9 @@ const AddCommunity = memo(() => {
                         <option value="기타">기타</option>
                     </select>
                     {formik.touched.object ? formik.errors.object && (<span className="alert"> {formik.errors.object}</span>) : null}
-                    <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." defaultValue={formik.values.title} {...formik.getFieldProps("title")} />
+                    <input className="titleArea" type="text" name="title" placeholder="제목을 입력해주세요." defaultValue={data?.title} {...formik.getFieldProps("title")} />
                     {formik.touched.title ? formik.errors.title && (<span className="alert"> {formik.errors.title}</span>) : null}
-                    <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." defaultValue={formik.values.content} {...formik.getFieldProps("content")} />
+                    <textarea className="textArea" type="text" name="content" placeholder="내용을 입력해주세요." defaultValue={data?.content} {...formik.getFieldProps("content")} />
                     {formik.touched.content ? formik.errors.content && (<span className="alert"> {formik.errors.content}</span>) : null}
                     <ButtonBox>
                         <button className="cancelBtn" onClick={backwards}>취소</button>
