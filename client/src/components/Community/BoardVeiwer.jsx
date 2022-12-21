@@ -111,11 +111,13 @@ const BVCss = styled.div`
             }
         }
         .content {
-            width: 100%;
+            width: auto;
             height: 100%;
+            line-height: 20px;
             padding-top: 40px;
             padding-bottom: 40px;
             padding-left: 20px;
+            padding-right: 20px;
         }
     }
     .commentBox {
