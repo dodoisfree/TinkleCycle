@@ -136,7 +136,6 @@ const AddCommunity = memo(() => {
             });
         },
     });
-console.log(data.object,data.title);
 
     return (
         <AddBoardContainer className="containerSize inside">

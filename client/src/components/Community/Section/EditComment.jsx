@@ -50,7 +50,7 @@ const AddComment = memo(() =>{
         .max(15, "댓글은 최대 15글자 까지 가능합니다."),
     }),
     onSubmit: (values) => {
-        window.alert('댓글이 등록 되었습니다.');
+        window.alert('댓글이 수정 되었습니다.');
         dispatch(putItem({
             comment:values.comment
         })).then(()=>{    // then 함수를 처리하고 콜백을 넣어야함
@@ -59,7 +59,7 @@ const AddComment = memo(() =>{
     },
   });
 
-  console.log(data);
+  console.log(data?.comment);
 
     return (
       <CommentContainer className="containerSize inside">
@@ -68,7 +68,7 @@ const AddComment = memo(() =>{
         <ErrorView error={error}/>
        ) :(
         <form onSubmit={formik.handleSubmit}>
-            <input type="text" placeholder="댓글을 작성해주세요" name="comment" value={data?.comment} {...formik.getFieldProps("comment")} />
+            <input type="text" placeholder="댓글을 작성해주세요" name="comment" defaultValue={data?.comment} {...formik.getFieldProps("comment")} />
             <button className='addBtn' type="submit"><img src={AddBtn} alt="addBtn" /></button>
             {formik.touched.comment ? (<span className="alert">{formik.errors.comment}</span>) : null}
         </form>
