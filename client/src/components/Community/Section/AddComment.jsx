@@ -3,12 +3,13 @@
  * @description: 댓글 생성 구현 ---- 파일 삭제 예정
  * @author: 천경재
  */
-import React,{ memo} from 'react';
+import React,{ memo, useEffect } from 'react';
 import styled from 'styled-components';
 import Spinner from '../../Spinner';
 import ErrorView from '../../ErrorView';
 import { useDispatch,useSelector } from "react-redux";
-import {postItem} from '../../../slices/CommentSlice';
+import { getItem, postItem, putItem } from '../../../slices/CommentSlice';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -43,12 +44,20 @@ const CommentContainer = styled.div`
 `;
 
 const AddComment = memo(() =>{
+    const navigate = useNavigate();
+    const {id} = useParams();
+
      /** 저장 완료 후 목록 강제 이동을 처리하기 위한 navigate 함수 생성 */
     // navigate 리턴받는 자체가 함수인 경우를 클로저라고 한다.
     /** 리덕스 관련 초기화 */
     // data를 생성하기 때문에 data를 불러올 필요는 없다.
     const dispatch = useDispatch();
-    const {loading, error} = useSelector((state)=> state.comment);
+    const {data, loading, error} = useSelector((state)=> state.comment);
+    
+      /** 페이지가 열림과 동시에 id값에 대한 데이터를 조회하여 리덕스 상태값에 반영한다. */
+    useEffect(()=>{
+        dispatch(getItem({id: id}));  //리덕스가 data를 조회한 다음 그 결과를 data를 셋팅함 
+    },[dispatch,id]);
 
     const formik = useFormik({
         initialValues: {
@@ -67,7 +76,8 @@ const AddComment = memo(() =>{
             }));
         },
       });
- 
+      console.log(data.comment);
+
     return (
       <CommentContainer>
           <Spinner visible={loading} /> 

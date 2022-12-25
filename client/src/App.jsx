@@ -13,7 +13,7 @@ import GoTop from './components/GoTop';
 import MyPage from './pages/MyPage';
 import EditBoard from './pages/Community/EditBoard';
 import AddBoard from './pages/Community/AddBoard';
-import EditComment from './components/Community/Section/EditComment';
+// import EditComment from './components/Community/Section/EditComment';
 import MenuBar from './components/MenuBar';
 // import Pasing from './pages/Pasing';
 
@@ -34,7 +34,7 @@ const App = memo(() => {
         <Route path='/community' element={<Community/>}/>
         <Route path='/addBoard' element={<AddBoard/>} />
         <Route path='/editBoard/:id'  element={<EditBoard/>} />
-        <Route path='/editComment/:id' element={<EditComment/>}/>
+        {/* <Route path='/editComment/:id' element={<EditComment/>}/> */}
       </Routes>
       <GoTop />
       <Footer/>
