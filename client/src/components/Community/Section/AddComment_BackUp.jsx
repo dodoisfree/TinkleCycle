@@ -8,8 +8,8 @@ import styled from 'styled-components';
 import Spinner from '../../Spinner';
 import ErrorView from '../../ErrorView';
 import { useDispatch,useSelector } from "react-redux";
-import { getItem, postItem, putItem } from '../../../slices/CommentSlice';
-import { useParams, useNavigate } from 'react-router-dom';
+import { getItem, postItem } from '../../../slices/CommentSlice';
+import { useParams } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -44,7 +44,6 @@ const CommentContainer = styled.div`
 `;
 
 const AddComment = memo(() =>{
-    const navigate = useNavigate();
     const {id} = useParams();
 
      /** 저장 완료 후 목록 강제 이동을 처리하기 위한 navigate 함수 생성 */
