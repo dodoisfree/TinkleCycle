@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useState } from "react";
 
-import { getList, postItem, putItem } from "../../slices/CommentSlice";
+import { getList, postItem } from "../../slices/CommentSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
