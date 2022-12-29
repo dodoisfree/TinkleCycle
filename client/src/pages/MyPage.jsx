@@ -9,6 +9,14 @@ const MyPageCss = styled.div`
     .containerSize {
         margin-top: 40px;
         margin-bottom: 40px;
+        .myRez {
+            width: 100%;
+            height: 100%;
+        }
+        .myStory {
+            width: 100%;
+            height: 100%;
+        }
     }
 `;
 

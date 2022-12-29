@@ -342,8 +342,8 @@ const BoardVeiwer = memo(({ id, title, object, content, deleteItem }) => {
                         <span className="likeCounter">{`${likes}`}</span>
                     </div>
                 </div>
-                {/* <div className="commentOpen" style={{ height: isOpen ? "215px" : "0" }}> */}
-                <div className="commentOpen" style={{ display: isOpen ? "block" : "none" }}>
+                <div className="commentOpen" style={{ height: isOpen ? "215px" : "0" }}>
+                {/* <div className="commentOpen" style={{ display: isOpen ? "block" : "none" }}> */}
                     {error ? (
                         <ErrorView error={error} />
                     ) : ( data && data.length > 0 && data.map(({ id, comment }, i) => {
