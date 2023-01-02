@@ -5,16 +5,16 @@
  */
 import React,{ memo,useEffect} from 'react';
 import styled from 'styled-components';
-import Spinner from '../../Spinner';
-import ErrorView from '../../ErrorView';
+import Spinner from '../Spinner';
+import ErrorView from '../ErrorView';
 // import regexHelper from '../../../libs/RegexHelper';
 import { useDispatch,useSelector } from "react-redux";
-import { getItem, putItem } from '../../../slices/CommentSlice';
+import { getItem, putItem } from '../../slices/CommentSlice';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import AddBtn from '../../../assets/img/next.png'
+import AddBtn from '../../assets/img/next.png'
 
 const CommentContainer =styled.div`
   border: 1px solid #d5d5d5;

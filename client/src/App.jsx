@@ -13,7 +13,7 @@ import GoTop from './components/GoTop';
 import MyPage from './pages/MyPage';
 import EditBoard from './pages/Community/EditBoard';
 import AddBoard from './pages/Community/AddBoard';
-import EditComment from './components/Community/Section/EditComment';
+import EditComment from './components/Community/EditComment';
 import MenuBar from './components/MenuBar';
 // import Pasing from './pages/Pasing';
 

@@ -5,10 +5,10 @@
  */
 import React,{ memo, useEffect } from 'react';
 import styled from 'styled-components';
-import Spinner from '../../Spinner';
-import ErrorView from '../../ErrorView';
+import Spinner from '../Spinner';
+import ErrorView from '../ErrorView';
 import { useDispatch,useSelector } from "react-redux";
-import { getItem, postItem } from '../../../slices/CommentSlice';
+import { getItem, postItem } from '../../slices/CommentSlice';
 import { useParams } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as Yup from "yup";
